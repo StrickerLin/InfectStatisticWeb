@@ -1,0 +1,19 @@
+#content{
+	background-color:white;
+	width:910px;
+	margin:0 auto;
+}
+#map{
+    width:900px;
+    height:500px;
+    margin: 10px auto;
+    border:1px solid #ddd;
+}
+.infectData{
+    width:200px;
+    display:inline-block;
+}
+#inlineframe{
+    width:900px;
+    height:400px;
+}
