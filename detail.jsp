@@ -9,8 +9,8 @@
 	<body>
 		<h1>某某省的详细情况</h1>
 		<div id="content">
-			<div id="allTypeChart"></div>
-			<div id="addChart"></div>
+			<div id="allTypeChart-box"></div>
+			<div id="addChart-box"></div>
 		</div>
 	</body>
 </html>
