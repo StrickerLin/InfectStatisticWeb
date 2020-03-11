@@ -8,13 +8,17 @@ package pojo; /**
  * @Description:
  */
 import java.io.Serializable;
-
 /**
- * Created by yjl on 2019/5/30.
+ * @PackgeName: util
+ * @ClassName: DBUtil
+ * @Author: ll
+ * Date: 2020/3/11
+ * project name: InfectStatisticWeb
+ * @Version:
+ * @Description:
  */
 public class HttpPojo implements Serializable {
     private static final long serialVersionUID = -2019661705306735496L;
-
     private String httpIp;
     private String httpHost;
     private String httpAccept;

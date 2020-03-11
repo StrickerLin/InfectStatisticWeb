@@ -22,7 +22,44 @@ import java.util.regex.Pattern;
  * @Description:
  */
 class Spider {
-    public static String getStatisticsService() {
+    public static String getCountryStatisticsService() {
+        /*String url = "https://ncov.dxy.cn/ncovh5/view/pneumonia";
+        //模拟请求
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("ncov.dxy.cn");*/
+        //httpPojo.setHttpAccept("*/*");
+       /* httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36");
+        httpPojo.setHttpReferer("https://ncov.dxy.cn");
+        httpPojo.setHttpOrigin("https://ncov.dxy.cn");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        String reg = "window.getStatisticsService = (.*?)\\}(?=catch)";*/
+
+
+        String url = "https://ncov.dxy.cn/ncovh5/view/pneumonia";
+        //模拟请求
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("ncov.dxy.cn");
+        httpPojo.setHttpAccept("*/*");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36");
+        httpPojo.setHttpReferer("https://ncov.dxy.cn");
+        httpPojo.setHttpOrigin("https://ncov.dxy.cn");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        String reg = "window.getStatisticsService = (.*?)\\}(?=catch)";
+
+        Pattern totalPattern = Pattern.compile(reg);
+        Matcher totalMatcher = totalPattern.matcher(htmlResult);
+        String result = "";
+        if (totalMatcher.find()) {
+            result = totalMatcher.group(1);
+        }
+        return result;
+    }
+
+    public static String getProvinceStatisticService() {
         String url = "https://ncov.dxy.cn/ncovh5/view/pneumonia";
         //模拟请求
         HttpPojo httpPojo = new HttpPojo();
@@ -37,18 +74,19 @@ class Spider {
         //System.out.println(htmlResult);
 
         //正则获取数据
-        //因为html的数据格式看着就像json格式，所以我们正则获取json：{"id":1,"createTime":1579537899000,"modifyTime":1580571956000,"infectSource":"野生动物，可能为中华菊头蝠","passWay":"经呼吸道飞沫传播，亦可通过接触传播","imgUrl":"https://img1.dxycdn.com/2020/0201/450/3394153392393266839-135.png","dailyPic":"https://img1.dxycdn.com/2020/0201/693/3394145745204021706-135.png","summary":"","deleted":false,"countRemark":"","confirmedCount":11901,"suspectedCount":17988,"curedCount":275,"deadCount":259,"virus":"新型冠状病毒 2019-nCoV","remark1":"易感人群: 人群普遍易感。老年人及有基础疾病者感染后病情较重，儿童及婴幼儿也有发病","remark2":"潜伏期: 一般为 3~7 天，最长不超过 14 天，潜伏期内存在传染性","remark3":"","remark4":"","remark5":"","generalRemark":"疑似病例数来自国家卫健委数据，目前为全国数据，未分省市自治区等","abroadRemark":""}
-        String reg = "window.getStatisticsService = (.*?)\\}(?=catch)";
+        //因为html的数据格式看着就像json格式，所以我们正则获取json
+        String reg = "window.getListByCountryTypeService1 = (.*?)\\}(?=catch)";
         Pattern totalPattern = Pattern.compile(reg);
         Matcher totalMatcher = totalPattern.matcher(htmlResult);
-
         String result = "";
         if (totalMatcher.find()) {
             result = totalMatcher.group(1);
             System.out.println(result);
-            //JSONObject jsonObject = JSONObject.parseObject(result);
-            //String modifyTime = jsonObject.getString("modifyTime");
-            //System.out.println("modifyTime："+modifyTime);
+            //各个省市的是一个列表List，如果想保存到数据库中，要遍历结果，下面是demo
+            /*JSONArray array = JSONArray.parseArray(result);
+            JSONObject jsonObject = JSONObject.parseObject(array.getString(0));
+            String provinceName = jsonObject.getString("provinceName");
+            System.out.println("provinceName："+provinceName);*/
         }
 
         return result;
@@ -60,10 +98,8 @@ class Spider {
 
         BufferedReader in = null;
         try {
-
             URL realURL = new URL(urlName);
             URLConnection conn = realURL.openConnection();
-            //伪造ip访问
             String ip = randIP();
             System.out.println("目前伪造的ip：" + ip);
             conn.setRequestProperty("X-Forwarded-For", ip);
@@ -86,8 +122,6 @@ class Spider {
             while ((line = in.readLine()) != null) {
                 result += "\n" + line;
             }
-
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
