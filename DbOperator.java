@@ -38,7 +38,17 @@ public class DbOperator{
 		}
 	}
 
-	public void WriteSql(String pid,String pname,int infect,int dinfect,int cure,int dead,java.util.Date d){
-		
+	public void writeSql(String pid,String pname,int infect,int dinfect,int cure,int dead,java.util.Date d){
+		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
+		String dStr=ft.format(d);
+		Statement stm;
+		String sqlstr="insert into "+daName+" value("+pid+",'"+pname+"',"+infect+","+dinfect+","+cure+','+dead+",'"+dStr+");";
+		try {
+			stm=conn.createStatement();
+			stm.executeQuery(sqlstr);
+		}catch(SQLException e) {
+			System.out.print(e);
+			System.exit(2);
+		}
 	}
 }
