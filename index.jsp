@@ -130,25 +130,151 @@
         	});
     	</script>
 		</div>
+		<br>
+		<br>
 		<div id="chart-box">
 		</div>
 		<script>
-			var chart1=echarts.init(document.getById("chart-box"));
-			var option1=[];
+			var chart1=echarts.init(document.getElementById("chart-box"));
+			var option1 = {
+				    title: {
+				        text: '全国各类感染人数'
+				    },
+				    tooltip: {
+				        trigger: 'axis'
+				    },
+				    legend: {
+				        data: ['确诊患者', '疑似患者', '治愈', '死亡']
+				    },
+				    grid: {
+				        left: '3%',
+				        right: '4%',
+				        bottom: '3%',
+				        containLabel: true
+				    },
+				    toolbox: {
+				        feature: {
+				            saveAsImage: {}
+				        }
+				    },
+				    xAxis: {
+				        type: 'category',
+				        boundaryGap: false,
+				        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+				    },
+				    yAxis: {
+				        type: 'value'
+				    },
+				    series: [
+				        {
+				            name: '确诊患者',
+				            type: 'line',
+				            stack: '总量',
+				            data: [120, 132, 101, 134, 90, 230, 210]
+				        },
+				        {
+				            name: '疑似患者',
+				            type: 'line',
+				            stack: '总量',
+				            data: [220, 182, 191, 234, 290, 330, 310]
+				        },
+				        {
+				            name: '治愈',
+				            type: 'line',
+				            stack: '总量',
+				            data: [150, 232, 201, 154, 190, 330, 410]
+				        },
+				        {
+				            name: '死亡',
+				            type: 'line',
+				            stack: '总量',
+				            data: [320, 332, 301, 334, 390, 330, 320]
+				        }
+				    ]
+				};
 			
 			chart1.setOption(option1);
 		</script>
+		<br>
+		<br>
 		<div id="addchart">
 		</div>
 		<script>
-			var chart2=echarts.init(document.getById("addchart"));
-			var option2=[];
+			var chart2=echarts.init(document.getElementById("addchart"));
+			var option2 = {
+				    title: {
+				        text: '全国各类感染新增人数'
+				    },
+				    tooltip: {
+				        trigger: 'axis'
+				    },
+				    legend: {
+				        data: ['新增确诊患者', '新增疑似患者', '新增治愈', '新增死亡']
+				    },
+				    grid: {
+				        left: '3%',
+				        right: '4%',
+				        bottom: '3%',
+				        containLabel: true
+				    },
+				    toolbox: {
+				        feature: {
+				            saveAsImage: {}
+				        }
+				    },
+				    xAxis: {
+				        type: 'category',
+				        boundaryGap: false,
+				        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+				    },
+				    yAxis: {
+				        type: 'value'
+				    },
+				    series: [
+				        {
+				            name: '新增确诊患者',
+				            type: 'line',
+				            stack: '总量',
+				            data: [120, 132, 101, 134, 90, 230, 210]
+				        },
+				        {
+				            name: '新增疑似患者',
+				            type: 'line',
+				            stack: '总量',
+				            data: [220, 182, 191, 234, 290, 330, 310]
+				        },
+				        {
+				            name: '新增治愈',
+				            type: 'line',
+				            stack: '总量',
+				            data: [150, 232, 201, 154, 190, 330, 410]
+				        },
+				        {
+				            name: '新增死亡',
+				            type: 'line',
+				            stack: '总量',
+				            data: [320, 332, 301, 334, 390, 330, 320]
+				        }
+				    ]
+				};
 			
 			chart2.setOption(option2);
 		</script>
+		<br>
+		<br>
 		<div id="inline-box">
 			<iframe src="https://baijiahao.baidu.com/s?id=1658566544718579058&wfr=spider&for=pc" name="inframe" id="inlineframe"></iframe>
 		</div>
+		<br>
+		<br>
+		<div id="button-box" style="text-align:center">
+				<button onclick="ask()">医生问询通道</button>
+		</div>
+		<script type="text/javascript">
+			function ask(){
+				window.location.href="https://www.120ask.com/";
+			}
+		</script>
 	</div>
 </body>
 </html>
