@@ -1,5 +1,6 @@
 package dao;
 
+import org.sqlite.SQLiteException;
 import pojo.Province;
 import myUtil.*;
 
@@ -16,15 +17,20 @@ import java.util.List;
  * @Description:
  */
 public class ProvinceDAOImpl {
-    public ProvinceDAOImpl() throws SQLException {
-        Connection conn = DBUtil.getConnection();
-        Statement stmt = conn.createStatement();
-        //stmt.executeUpdate("drop table if exists province;");
-        stmt.executeUpdate( "create table  if not exists province(name varchar(20),day date ,ipIncrease int " +
-                ",spIncrease int,cureIncrease int ,deadIncrease int,ip  int,sp int ,cure int ,dead int);" );
+    public void createTable(String tableName) {
+        try{
+            Connection conn = DBUtil.getConnection();
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate("drop table if exists "+ tableName);
+            stmt.executeUpdate( "create table  if not exists " + tableName +"(name varchar(20) PRIMARY KEY,day date ,ipIncrease int " +
+                    ",spIncrease int,cureIncrease int ,deadIncrease int,ip  int,sp int ,cure int ,dead int);" );
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
-    public void insert(Province province){
-        String sql = "insert into province values(?,?,?,?,?,?,?,?,?,?)";
+    public void insert(Province province,String tableName){
+        String sql = "insert into " + tableName +" values(?,?,?,?,?,?,?,?,?,?)";
         try (Connection conn = DBUtil.getConnection();  PreparedStatement stmt = conn.prepareStatement(sql)) {
             /*stmt.executeUpdate("drop table if exists province;");
             stmt.executeUpdate( "create table  if not exists province(name varchar(20),day date ,ip  int,sp int ,cure int ,dead int);" );//创建一个表，两列*/
@@ -39,6 +45,8 @@ public class ProvinceDAOImpl {
             stmt.setInt(9,province.getCure());
             stmt.setInt(10,province.getDead());
             stmt.execute(); //插入数据
+        } catch (SQLiteException e) {
+            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -54,9 +62,9 @@ public class ProvinceDAOImpl {
 
     }
 
-    public List<Province> list(){
+    public List<Province> list(String tableName){
         List<Province> provinces=new ArrayList<Province>();
-        String sql = "select * from province";
+        String sql = "select * from "+tableName;
         try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement()) {
             ResultSet rs = s.executeQuery(sql);
             while (rs.next()) {
