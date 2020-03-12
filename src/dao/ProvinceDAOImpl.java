@@ -1,7 +1,7 @@
 package dao;
 
 import pojo.Province;
-import util.*;
+import myUtil.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,20 +19,25 @@ public class ProvinceDAOImpl {
     public ProvinceDAOImpl() throws SQLException {
         Connection conn = DBUtil.getConnection();
         Statement stmt = conn.createStatement();
-        stmt.executeUpdate("drop table if exists province;");
-        stmt.executeUpdate( "create table  if not exists province(name varchar(20),day date ,ip  int,sp int ,cure int ,dead int);" );//创建一个表，两列
+        //stmt.executeUpdate("drop table if exists province;");
+        stmt.executeUpdate( "create table  if not exists province(name varchar(20),day date ,ipIncrease int " +
+                ",spIncrease int,cureIncrease int ,deadIncrease int,ip  int,sp int ,cure int ,dead int);" );
     }
     public void insert(Province province){
-        String sql = "insert into province values(?,?,?,?,?,?)";
+        String sql = "insert into province values(?,?,?,?,?,?,?,?,?,?)";
         try (Connection conn = DBUtil.getConnection();  PreparedStatement stmt = conn.prepareStatement(sql)) {
             /*stmt.executeUpdate("drop table if exists province;");
             stmt.executeUpdate( "create table  if not exists province(name varchar(20),day date ,ip  int,sp int ,cure int ,dead int);" );//创建一个表，两列*/
             stmt.setString(1,province.getName());
             stmt.setString(2,province.getDay());
-            stmt.setInt(3,province.getIp());
-            stmt.setInt(4,province.getSp());
-            stmt.setInt(5,province.getCure());
-            stmt.setInt(6,province.getDead());
+            stmt.setInt(3,province.getIpIncrease());
+            stmt.setInt(4,province.getSpIncrease());
+            stmt.setInt(5,province.getCureIncrease());
+            stmt.setInt(6,province.getDeadIncrease());
+            stmt.setInt(7,province.getIp());
+            stmt.setInt(8,province.getSp());
+            stmt.setInt(9,province.getCure());
+            stmt.setInt(10,province.getDead());
             stmt.execute(); //插入数据
         } catch (SQLException e) {
             e.printStackTrace();
@@ -58,6 +63,10 @@ public class ProvinceDAOImpl {
                 Province province = new Province();
                 province.setName(rs.getString("name"));
                 province.setDay(rs.getString("day"));
+                province.setIpIncrease(rs.getInt("ipIncrease"));
+                province.setSpIncrease(rs.getInt("spIncrease"));
+                province.setCureIncrease(rs.getInt("cureIncrease"));
+                province.setDeadIncrease(rs.getInt("deadIncrease"));
                 province.setIp(rs.getInt("ip"));
                 province.setSp(rs.getInt("sp"));
                 province.setCure(rs.getInt("cure"));

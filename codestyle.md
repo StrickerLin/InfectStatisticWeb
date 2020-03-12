@@ -41,7 +41,7 @@ PO / UID 等。
 9. 【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用
 单数形式，但是类名如果有复数含义，类名可以使用复数形式。
     
-    正例：应用工具类包名为 com.alibaba.ai.util、类名为 MessageUtils（此规则参考 spring
+    正例：应用工具类包名为 com.alibaba.ai.myUtil、类名为 MessageUtils（此规则参考 spring
 的框架结构）
 10. 【强制】杜绝完全不规范的缩写，避免望文不知义。
     
@@ -288,7 +288,7 @@ equals。
     
     反例：object.equals("test");
     
-    说明：推荐使用 java.util.Objects#equals（JDK7 引入的工具类）
+    说明：推荐使用 java.myUtil.Objects#equals（JDK7 引入的工具类）
 7. 【强制】所有的相同类型的包装类对象之间值的比较，全部使用 equals 方法比较。
     
     说明：对于 Integer var = ? 在-128 至 127 范围内的赋值，Integer 对象是在
@@ -420,7 +420,7 @@ getter/setter 方法中，不要增加业务逻辑，增加排查问题的难度
     说明：String 重写了 hashCode 和 equals 方法，所以我们可以非常愉快地使用 String 对象
 作为 key 来使用。
 2. 【强制】ArrayList的subList结果不可强转成ArrayList，否则会抛出ClassCastException
-异常，即 java.util.RandomAccessSubList cannot be cast to java.util.ArrayList。
+异常，即 java.myUtil.RandomAccessSubList cannot be cast to java.myUtil.ArrayList。
     
     说明：subList 返回的是 ArrayList 的内部类 SubList，并不是 ArrayList 而是 ArrayList
 的一个视图，对于 SubList 子列表的所有操作最终会反映到原列表上。
@@ -616,7 +616,7 @@ immutable thread-safe。
 11. 【推荐】避免 Random 实例被多线程使用，虽然共享该实例是线程安全的，但会因竞争同一
 seed 导致的性能下降。
     
-    说明：Random 实例包括 java.util.Random 的实例或者 Math.random()的方式。
+    说明：Random 实例包括 java.myUtil.Random 的实例或者 Math.random()的方式。
     
     正例：在 JDK7 之后，可以直接使用 API ThreadLocalRandom，而在 JDK7 之前，需要编码保
 证每个线程持有一个实例。
