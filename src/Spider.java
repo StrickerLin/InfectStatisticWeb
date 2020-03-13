@@ -64,7 +64,7 @@ class Spider {
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
-        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Pattern ipPattern = Pattern.compile("现有确诊病例(\\d+)例");
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
         Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
@@ -139,34 +139,208 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("山西");
+        province.setName("山西省");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
-  /*  public static  Province getLiaoNingData(String url){
-
+    public static  Province getLiaoNingData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wsjk.ln.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpAccept("sto-id-20480=FCKDMFDLFAAA");
+        //httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile("2020年(\\d+)月(\\d+)日");
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile("现有(\\d+)名确诊患者在院治疗");
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile("现有(\\d+)人正在接受医学观察");
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("治愈出院(\\d+)例");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile("死亡(\\d+)例");
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("辽宁省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
     public static  Province getJiLinData(String url){
-
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("www.jl.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        //httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile("现在院隔离治疗确诊病例(\\d+)例");
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile("现有疑似病例(\\d+)例");
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("累计治愈出院(\\d+)例");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile("死亡(\\d+)例");
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("吉林省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
     public static  Province getJiangsuData(String url){
-
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wjw.jiangsu.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile("新增新型冠状病毒肺炎确诊病例(\\d+)例");
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile("新增出院病例(\\d+)例");
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("累计出院病例(\\d+)例");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("江苏省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
-    public static  Province getZhejiangData(){
-
+    public static  Province getZhejiangData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("www.zjwjw.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile("新增新型冠状病毒肺炎确诊病例(\\d+)例");
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile("新增出院病例(\\d+)例");
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("累计出院(\\d+)例");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile("累计死亡(\\d+)例");
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("浙江省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
     public static  Province getShandongData(String url){
-
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wsjkw.shandong.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile("(\\d+)月(\\d+)日");
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile("新增治愈出院(\\d+)例");
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("累计治愈出院(\\d+)例");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("山东省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
-     public static  Province getHeilongjiangData(String url){
 
+    public static  Province getHeilongjiangData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wsjkw.hlj.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("现有治愈出院病例(\\d+)例");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile("死亡确诊病例(\\d+)例");
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("黑龙江省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
-   */
-
 
     public  static  Province getAnhuiData(String url){
         Province province = new Province();
@@ -179,7 +353,7 @@ class Spider {
        // httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
         Map paramObj = new HashMap();
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
-        Pattern dayPattern = Pattern.compile("(\\d+)月(\\d+)日");
+        Pattern dayPattern = Pattern.compile(reg.getDay());
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
         Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
@@ -191,13 +365,13 @@ class Spider {
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
         Pattern ipPattern = Pattern.compile(reg.getIp());
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
-        Pattern spPattern = Pattern.compile("累计医学观察密切接触者(.)*人");
+        Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
         Pattern curePattern = Pattern.compile(reg.getCure());
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("安徽");
+        province.setName("安徽省");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -230,7 +404,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("福建");
+        province.setName("福建省");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -263,16 +437,312 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("江西");
+        province.setName("江西省");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
-
 
     public static  Province getHenanData(String url){
         Province province = new Province();
         regUtil reg = new regUtil();
         HttpPojo httpPojo = new HttpPojo();
         httpPojo.setHttpHost("wsjkw.henan.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile("新增本地新冠肺炎确诊病例(\\d+)例");
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("累计出院病例(\\d+)例");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("河南省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getHubeiData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wjw.hubei.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile("截至2020年(.)*月(.)*日");
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile("全省新增新冠肺炎确诊病例(\\d+)例");
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile("当日新增(\\d+)人");
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile("全省新增出院(\\d+)例");
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile("全省新增病亡(\\d+)例");
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile("目前仍在院治疗(.)*例");
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile("现有疑似病例(.)*人");
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("全省累计治愈出院(.)*例");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile("全省累计病亡(.)*例");
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("湖北省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getHunanData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wjw.hunan.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile("新增出院病例(\\d+)例");
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile(reg.getCure());
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("湖南省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getGuangdongData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wsjkw.gd.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile("新增出院(\\d+)例");
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile("在院的(\\d+)例确诊病例");
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile("有疑似病例(\\d+)例");
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("累计出院(\\d+)例");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile("累计死亡(\\d+)例");
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("广东省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getHainanData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wst.hainan.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile("新增出院(\\d+)例");
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("，出院病例(\\d+)例");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile("，死亡病例(\\d+)例");
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("海南省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getSichuanData(String url) {
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wsjkw.sc.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile("(\\d+)月(\\d+)日0-24时");
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile("正在住院隔离治疗(\\d+)人");
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("治愈出院(\\d+)人");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile("死亡(\\d+)人");
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("四川省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getGuizhouData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("www.gzhfpc.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile("在院治疗(\\d+)例");
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile("疑似病例(\\d+)例");
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("治愈出院(\\d+)例");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile("死亡(\\d+)例");
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("贵州省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getShaanxiData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("sxwjw.shaanxi.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile("新增新冠肺炎确诊病例(\\d+)例");
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile("新增疑似病例(\\d+)例");
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile("reg.getCureIncrease()");
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile("全省现有疑似病例(\\d+)例");
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("(\\d+)例治愈出院");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile("(\\d+)例死亡");
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("陕西省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static  Province getGansuData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wsjk.gansu.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile("(\\d+)月(\\d+)日");
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile("新增(\\d+)例新冠肺炎确诊病例");
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile("累计治愈出院(\\d+)例");
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile("累计死亡病例(\\d+)例");
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("甘肃省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getQinghaiData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wsjkw.qinghai.gov.cn");
         httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
         httpPojo.setHttpConnection("keep-alive");
         httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
@@ -293,44 +763,409 @@ class Spider {
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
         Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("累计出院病例(\\d+)例");
+        Pattern curePattern = Pattern.compile(reg.getCure());
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("河南");
+        province.setName("青海省");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
-    public static Province getHubeiData(String url){
+
+    public static Province getNeimenguData(String url){
         Province province = new Province();
         regUtil reg = new regUtil();
         HttpPojo httpPojo = new HttpPojo();
-        httpPojo.setHttpHost("wjw.hubei.gov.cn");
+        httpPojo.setHttpHost("wjw.nmg.gov.cn");
         httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
         httpPojo.setHttpConnection("keep-alive");
         httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
         httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
         Map paramObj = new HashMap();
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
-        Pattern dayPattern = Pattern.compile("截至2020年(.)*月(.)*日");
+        Pattern dayPattern = Pattern.compile("2020年(\\d+)月(\\d+)日");
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
-        Pattern ipIncreasePattern = Pattern.compile("全省新增新冠肺炎确诊病例(\\d+)例");
+        Pattern ipIncreasePattern = Pattern.compile("新增新冠肺炎确诊病例(\\d+)例");
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
         Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
-        Pattern cureIncreasePattern = Pattern.compile("全省新增出院(\\d+)例");
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
-        Pattern deadIncreasePattern = Pattern.compile("全省新增病亡(\\d+)例");
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
-        Pattern ipPattern = Pattern.compile("目前仍在院治疗(.)*例");
+        Pattern ipPattern = Pattern.compile("现存确诊病例(\\d+)例");
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
-        Pattern spPattern = Pattern.compile("现有疑似病例(.)*人");
+        Pattern spPattern = Pattern.compile("疑似病例(\\d+)例");
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("全省累计治愈出院(.)*例");
+        Pattern curePattern = Pattern.compile("治愈出院(\\d+)例");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("全省累计病亡(.)*例");
+        Pattern deadPattern = Pattern.compile("死亡病例(\\d+)例");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("湖北");
+        province.setName("内蒙古自治区");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getGuangxiData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wsjkw.gxzf.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile(reg.getCure());
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("广西壮族自治区");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getXizangData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wsjkw.gxzf.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile(reg.getCure());
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("西藏自治区");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getNingxiaData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wsjkw.nx.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile(reg.getCure());
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("宁夏回族自治区");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+
+    public static  Province getXinjiangData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("www.xjhfpc.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile(reg.getCure());
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("新疆维吾尔自治区");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getBeijingData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wjw.beijing.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile(reg.getCure());
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("北京市");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getTianjinData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wsjk.tj.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile(reg.getCure());
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("天津市");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getShanghaiData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("wsjkw.sh.gov.cn");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile(reg.getCure());
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("上海市");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getChongqingData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("www.xinhuanet.com");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile(reg.getCure());
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("重庆市");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getTaiwanData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("www.xinhuanet.com");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile(reg.getCure());
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("台湾省");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static Province getXianggangData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("www.xinhuanet.com");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile(reg.getCure());
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("香港特别行政区");
+        return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
+    }
+
+    public static  Province getAomenData(String url){
+        Province province = new Province();
+        regUtil reg = new regUtil();
+        HttpPojo httpPojo = new HttpPojo();
+        httpPojo.setHttpHost("www.xinhuanet.com");
+        httpPojo.setHttpAccept("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+        httpPojo.setHttpConnection("keep-alive");
+        httpPojo.setHttpUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36");
+        httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
+        Map paramObj = new HashMap();
+        String htmlResult = httpSendGet(url, paramObj, httpPojo);
+        Pattern dayPattern = Pattern.compile(reg.getDay());
+        Matcher dayMatcher = dayPattern.matcher(htmlResult);
+        Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
+        Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
+        Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
+        Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
+        Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
+        Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
+        Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
+        Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
+        Pattern ipPattern = Pattern.compile(reg.getIp());
+        Matcher ipMatcher = ipPattern.matcher(htmlResult);
+        Pattern spPattern = Pattern.compile(reg.getSp());
+        Matcher spMatcher = spPattern.matcher(htmlResult);
+        Pattern curePattern = Pattern.compile(reg.getCure());
+        Matcher cureMatcher = curePattern.matcher(htmlResult);
+        Pattern deadPattern = Pattern.compile(reg.getDead());
+        Matcher deadMatcher = deadPattern.matcher(htmlResult);
+        province.setName("澳门特别行政区");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
     private static Province getProvince(Province province, Matcher dayMatcher, Matcher ipIncreaseMatcher, Matcher spIncreaseMatcher, Matcher cureIncreaseMatcher, Matcher deadIncreaseMatcher, Matcher ipMatcher, Matcher spMatcher, Matcher cureMatcher, Matcher deadMatcher) {

@@ -45,6 +45,7 @@ public class ProvinceDAOImpl {
             stmt.setInt(9,province.getCure());
             stmt.setInt(10,province.getDead());
             stmt.execute(); //插入数据
+            conn.close();
         } catch (SQLiteException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -62,11 +63,24 @@ public class ProvinceDAOImpl {
 
     }
 
+    public int getPeopleNum(String province){
+        String sql = "select * from today where name="+province;
+        int ip = 0;
+        try (Connection conn = DBUtil.getConnection();  PreparedStatement stmt = conn.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery(sql);
+            if (rs.next())
+                ip = rs.getInt("ip");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ip;
+    }
+
     public List<Province> list(String tableName){
         List<Province> provinces=new ArrayList<Province>();
         String sql = "select * from "+tableName;
-        try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement()) {
-            ResultSet rs = s.executeQuery(sql);
+        try (Connection c = DBUtil.getConnection(); Statement stmt = c.createStatement()) {
+            ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Province province = new Province();
                 province.setName(rs.getString("name"));
