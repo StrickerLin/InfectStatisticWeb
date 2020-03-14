@@ -24,25 +24,7 @@ import java.util.regex.Pattern;
  * @Description:
  */
 class Spider {
-    /*private List<String> websites;
-    public List<String> initWebsites(){
-        websites = new ArrayList<String>();
-        File file = new File("src/txt/CountryWebsites.txt");
-        try{
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"UTF-8"));
-            String currentLine = null;
-            while((currentLine = reader.readLine()) != null){
-                websites.add(currentLine);
-            }
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-        return websites;
-    }
-
-    public List<String> getWebsites(){
-        return websites;
-    }*/
+    
     public static  Province getYunnanData(String url){
         Province province = new Province();
         regUtil reg = new regUtil();
@@ -338,7 +320,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile("死亡确诊病例(\\d+)例");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("黑龙江省");
+        province.setName("黑龙江");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -371,7 +353,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("安徽省");
+        province.setName("安徽");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -404,7 +386,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("福建省");
+        province.setName("福建");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -437,7 +419,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("江西省");
+        province.setName("江西");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -470,7 +452,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("河南省");
+        province.setName("河南");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -503,7 +485,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile("全省累计病亡(.)*例");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("湖北省");
+        province.setName("湖北");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -536,7 +518,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("湖南省");
+        province.setName("湖南");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -569,7 +551,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile("累计死亡(\\d+)例");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("广东省");
+        province.setName("广东");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -602,7 +584,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile("，死亡病例(\\d+)例");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("海南省");
+        province.setName("海南");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -635,7 +617,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile("死亡(\\d+)人");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("四川省");
+        province.setName("四川");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -668,7 +650,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile("死亡(\\d+)例");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("贵州省");
+        province.setName("贵州");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -701,7 +683,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile("(\\d+)例死亡");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("陕西省");
+        province.setName("陕西");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -734,7 +716,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile("累计死亡病例(\\d+)例");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("甘肃省");
+        province.setName("甘肃");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -767,7 +749,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("青海省");
+        province.setName("青海");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -801,7 +783,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile("死亡病例(\\d+)例");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("内蒙古自治区");
+        province.setName("内蒙古");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -834,7 +816,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("广西壮族自治区");
+        province.setName("广西");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -867,7 +849,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("西藏自治区");
+        province.setName("西藏");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -900,7 +882,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("宁夏回族自治区");
+        province.setName("宁夏");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -934,7 +916,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("新疆维吾尔自治区");
+        province.setName("新疆");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -967,7 +949,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("北京市");
+        province.setName("北京");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -1000,7 +982,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("天津市");
+        province.setName("天津");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -1033,7 +1015,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("上海市");
+        province.setName("上海");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -1066,7 +1048,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("重庆市");
+        province.setName("重庆");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -1099,7 +1081,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("台湾省");
+        province.setName("台湾");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -1132,7 +1114,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("香港特别行政区");
+        province.setName("香港");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -1165,9 +1147,10 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("澳门特别行政区");
+        province.setName("澳门");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
+
     private static Province getProvince(Province province, Matcher dayMatcher, Matcher ipIncreaseMatcher, Matcher spIncreaseMatcher, Matcher cureIncreaseMatcher, Matcher deadIncreaseMatcher, Matcher ipMatcher, Matcher spMatcher, Matcher cureMatcher, Matcher deadMatcher) {
         if (dayMatcher.find())
             province.setDay("2020-"+dayMatcher.group(1)+"-"+dayMatcher.group(2));
@@ -1241,6 +1224,9 @@ class Spider {
         Matcher DateMatcher = DatePattern.matcher(htmlResult);
         String result = "";
         String modifyTime = "";
+        String[] names ={"河北", "山西", "辽宁", "吉林", "黑龙江", "江苏", "浙江", "安徽", "福建","江西","山东"
+                , "河南", "湖北", "湖南","广东","海南","四川","贵州","云南" ,"陕西", "甘肃","青海","台湾","内蒙古"
+                , "广西","西藏", "宁夏","新疆","北京","天津","上海", "重庆","香港","澳门"};
         if (DateMatcher.find()){
             result = DateMatcher.group(1);
             JSONObject jsonObject = JSONObject.fromObject(result);
@@ -1251,12 +1237,6 @@ class Spider {
         Matcher totalMatcher = totalPattern.matcher(htmlResult);
         if (totalMatcher.find()) {
             result = totalMatcher.group(1);
-            //System.out.println(result);
-            //各个省市的是一个列表List，如果想保存到数据库中，要遍历结果，下面是demo
-            /*JSONArray array = JSONArray.parseArray(result);
-            JSONObject jsonObject = JSONObject.parseObject(array.getString(0));
-            String provinceName = jsonObject.getString("provinceName");
-            System.out.println("provinceName："+provinceName);*/
             JSONArray array = JSONArray.fromObject(result);
             for (int i=0;i<array.size();i++){
                 province = new Province();
@@ -1265,7 +1245,12 @@ class Spider {
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 String dateString = format.format(date);
                 province.setDay(dateString);
-                province.setName(jsonObject.getString("provinceName"));
+                for (String name:names
+                     ) {
+                    if (jsonObject.getString("provinceName").substring(0,2).equals(name))
+                        province.setName(name);
+                }
+
                 province.setIp(jsonObject.getInt("currentConfirmedCount"));
                 province.setCure(jsonObject.getInt("curedCount"));
                 province.setDead(jsonObject.getInt("deadCount"));
