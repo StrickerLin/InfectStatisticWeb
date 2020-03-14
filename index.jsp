@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
-<%@ page import="com.mysql.jdbc.Driver" %> 
+<%@ page import="com.mysql.jdbc.Driver" %>
+
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,22 +16,119 @@
     <script src="map/js/china.js"></script>
 </head>
 <body>
+<%!
+	public int getIpNum(String province,Connection conn){
+		String sql = "select * from latest where name=?";
+		int ip = 0;
+		try ( PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setString(1,province);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next())
+				ip = rs.getInt("ip");
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return ip;
+	}
+%>
+<%!
+	public String getUpdateTime(Connection conn){
+		String day = null ;
+		String sql = "select * from latest";
+		try ( Statement stmt = conn.createStatement()) {
+			ResultSet rs = stmt.executeQuery(sql);
+			if (rs.next()){
+				day = rs.getString("day");
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return day;
+	}
+%>
+<%!
+	public int[] getAllTyeNum(Connection conn,String tableName){
+		String sql = "select * from "+tableName;
+		int[] num = {0,0,0,0,0,0,0,0};
+		try ( Statement stmt = conn.createStatement()) {
+			ResultSet rs = stmt.executeQuery(sql);
+			if (rs.next()){
+				num[0] = rs.getInt("ip");
+				num[1] = rs.getInt("ipIncrease");
+				num[2] = rs.getInt("sp");
+				num[3] = rs.getInt("spIncrease");
+				num[4] = rs.getInt("cure");
+				num[5] = rs.getInt("cureIncrease");
+				num[6] = rs.getInt("dead");
+				num[7] = rs.getInt("deadIncrease");
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return num;
+	}
+%>
+<%!
+	public int[] getSomdedayArray(Connection conn,String day){
+		String sql = "select * from country where day=?";
+		int[] num = {0,0,0,0,0,0,0,0};
+		try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+			stmt.setString(1,day);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()){
+				num[0] = rs.getInt("ip");
+				num[1] = rs.getInt("ipIncrease");
+				num[2] = rs.getInt("sp");
+				num[3] = rs.getInt("spIncrease");
+				num[4] = rs.getInt("cure");
+				num[5] = rs.getInt("cureIncrease");
+				num[6] = rs.getInt("dead");
+				num[7] = rs.getInt("deadIncrease");
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return num;
+	}
+%>
+<%
+	try{
+		Class.forName("org.sqlite.JDBC");
+	}catch (Exception e){
+		e.printStackTrace();
+	}
+	Class.forName("com.mysql.jdbc.Driver");  ////驱动程序名
+	String url = "jdbc:sqlite://d:/软件工程作业/production/production/InfectStatisticWeb/InfectData.db"; //数据库名
+	String username = "";  //数据库用户名
+	String password = "";  //数据库用户密码
+	Connection con = DriverManager.getConnection(url, username, password);  //连接状态
+	int[] num = getAllTyeNum(con,"country");
+	int[] march7 = getSomdedayArray(con,"2020-3-7");
+	int[] march8 = getSomdedayArray(con,"2020-3-8");
+	int[] march9 = getSomdedayArray(con,"2020-3-9");
+	int[] march10 = getSomdedayArray(con,"2020-3-10");
+	int[] march11 = getSomdedayArray(con,"2020-3-11");
+	int[] march12 = getSomdedayArray(con,"2020-3-12");
+	int[] march13 = getSomdedayArray(con,"2020-3-13");
+%>
 	<div id="content">
-		<h1>某次疫情可视化统计</h1>
+		<h1>某次疫情可视化统计(更新时间<%=getUpdateTime(con)%>)</h1>
 		<div id="static">
-			<div class="infectData">
-				<b>确诊患者：</b>
+			<div class="infectData"><b>确诊患者：<%=num[0]%></b>
 				<br>
-				<p>较昨日</p>
+				<p>较昨日+<%=num[1]%></p>
 			</div>
-			<div class="infectData"><b>疑似患者：</b><br>
-				<p>较昨日</p>
+			<div class="infectData"><b>疑似患者: <%=num[2]%></b>
+				<br>
+				<p>较昨日+<%=num[3]%></p>
 			</div>
-			<div class="infectData"><b>治愈：</b><br>
-				<p>较昨日</p>
+			<div class="infectData"><b>治愈：<%=num[4]%></b>
+				<br>
+				<p>较昨日+<%=num[5]%></p>
 			</div>
-			<div class="infectData"><b>死亡：</b><br>
-				<p>较昨日</p>
+			<div class="infectData"><b>死亡：<%=num[6]%></b>
+				<br>
+				<p>较昨日+<%=num[7]%></p>
 			</div>
 		</div>
 		<div id="map-box">
@@ -37,40 +136,40 @@
 			<script type="text/javascript">
       			var dataList=[
       		    	{name:"南海诸岛",value:0},
-    	        	{name: '北京', value: 181},
-   		        	{name: '天津', value: 0},
-            		{name: '上海', value: 65},
-            		{name: '重庆', value: 221},
-           		 	{name: '河北', value: 57},
-            		{name: '河南', value: 262},
-            		{name: '云南', value: 43},
-            		{name: '辽宁', value: 37},
-            		{name: '黑龙江', value: 227},
-            		{name: '湖南', value: 245},
-            		{name: '安徽', value: 270},
-            		{name: '山东', value: 395},
-            		{name: '新疆', value: 44},
-            		{name: '江苏', value: 173},
-            		{name: '浙江', value: 396},
-            		{name: '江西', value: 251},
-            		{name: '湖北', value: 432977},
-            		{name: '广西', value: 102},
-            		{name: '甘肃', value: 9},
-            		{name: '山西', value: 37},
-           			{name: '内蒙古', value: 41},
-            		{name: '陕西', value: 65},
-            		{name: '吉林', value: 29},
-            		{name: '福建', value: 87},
-            		{name: '贵州', value: 41},
-            		{name: '广东', value: 515},
-            		{name: '青海', value: 0},
-            		{name: '西藏', value: 0},
-            		{name: '四川', value: 239},
-            		{name: '宁夏', value: 10},
-            		{name: '海南', value: 39},
-            		{name: '台湾', value: 25},
-            		{name: '香港', value: 63},
-            		{name: '澳门', value: 3}
+    	        	{name: '北京', value:<%=getIpNum("北京",con)%>},
+   		        	{name: '天津', value: <%=getIpNum("天津",con)%>},
+            		{name: '上海', value: <%=getIpNum("上海",con)%>},
+            		{name: '重庆', value: <%=getIpNum("重庆",con)%>},
+           		 	{name: '河北', value: <%=getIpNum("河北",con)%>},
+            		{name: '河南', value: <%=getIpNum("河南",con)%>},
+            		{name: '云南', value: <%=getIpNum("云南",con)%>},
+            		{name: '辽宁', value: <%=getIpNum("辽宁",con)%>},
+            		{name: '黑龙江', value: <%=getIpNum("黑龙江",con)%>},
+            		{name: '湖南', value: <%=getIpNum("湖南",con)%>},
+            		{name: '安徽', value: <%=getIpNum("安徽",con)%>},
+            		{name: '山东', value: <%=getIpNum("山东",con)%>},
+            		{name: '新疆', value: <%=getIpNum("新疆",con)%>},
+            		{name: '江苏', value: <%=getIpNum("江苏",con)%>},
+            		{name: '浙江', value: <%=getIpNum("浙江",con)%>},
+            		{name: '江西', value: <%=getIpNum("江西",con)%>},
+            		{name: '湖北', value: <%=getIpNum("湖北",con)%>},
+            		{name: '广西', value: <%=getIpNum("广西",con)%>},
+            		{name: '甘肃', value: <%=getIpNum("甘肃",con)%>},
+            		{name: '山西', value: <%=getIpNum("山西",con)%>},
+           			{name: '内蒙古', value: <%=getIpNum("内蒙古",con)%>},
+            		{name: '陕西', value: <%=getIpNum("陕西",con)%>},
+            		{name: '吉林', value: <%=getIpNum("吉林",con)%>},
+            		{name: '福建', value: <%=getIpNum("福建",con)%>},
+            		{name: '贵州', value: <%=getIpNum("贵州",con)%>},
+            		{name: '广东', value: <%=getIpNum("广东",con)%>},
+            		{name: '青海', value: <%=getIpNum("青海",con)%>},
+            		{name: '西藏', value: <%=getIpNum("西藏",con)%>},
+            		{name: '四川', value: <%=getIpNum("四川",con)%>},
+            		{name: '宁夏', value: <%=getIpNum("宁夏",con)%>},
+            		{name: '海南', value: <%=getIpNum("海南",con)%>},
+            		{name: '台湾', value: <%=getIpNum("台湾",con)%>},
+            		{name: '香港', value: <%=getIpNum("香港",con)%>},
+            		{name: '澳门', value: <%=getIpNum("澳门",con)%>}
         		]
     		    var myChart = echarts.init(document.getElementById('map'));
    		        option = {
@@ -160,35 +259,35 @@
 				    xAxis: {
 				        type: 'category',
 				        boundaryGap: false,
-				        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+				        data: ['3-07', '3-08', '3-09', '3-10', '3-11', '3-12', '3-13']
 				    },
 				    yAxis: {
-				        type: 'value'
+				        type: 'value',
 				    },
 				    series: [
 				        {
 				            name: '确诊患者',
 				            type: 'line',
 				            stack: '总量',
-				            data: [120, 132, 101, 134, 90, 230, 210]
+				            data: [<%=march7[0]%>,<%=march8[0]%>,<%=march9[0]%>,<%=march10[0]%>,<%=march11[0]%>,<%=march12[0]%>,<%=march13[0]%>]
 				        },
 				        {
 				            name: '疑似患者',
 				            type: 'line',
 				            stack: '总量',
-				            data: [220, 182, 191, 234, 290, 330, 310]
+				            data: [<%=march7[2]%>,<%=march8[2]%>,<%=march9[2]%>,<%=march10[2]%>,<%=march11[2]%>,<%=march12[2]%>,<%=march13[2]%>]
 				        },
 				        {
 				            name: '治愈',
 				            type: 'line',
 				            stack: '总量',
-				            data: [150, 232, 201, 154, 190, 330, 410]
+				            data: [<%=march7[4]%>,<%=march8[4]%>,<%=march9[4]%>,<%=march10[4]%>,<%=march11[4]%>,<%=march12[4]%>,<%=march13[4]%>]
 				        },
 				        {
 				            name: '死亡',
 				            type: 'line',
 				            stack: '总量',
-				            data: [320, 332, 301, 334, 390, 330, 320]
+				            data: [<%=march7[6]%>,<%=march8[6]%>,<%=march9[6]%>,<%=march10[6]%>,<%=march11[6]%>,<%=march12[6]%>,<%=march13[6]%>]
 				        }
 				    ]
 				};
@@ -225,7 +324,7 @@
 				    xAxis: {
 				        type: 'category',
 				        boundaryGap: false,
-				        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+				        data: ['3-07', '3-08', '3-09', '3-10', '3-11', '3-12', '3-13']
 				    },
 				    yAxis: {
 				        type: 'value'
@@ -235,25 +334,25 @@
 				            name: '新增确诊患者',
 				            type: 'line',
 				            stack: '总量',
-				            data: [120, 132, 101, 134, 90, 230, 210]
+				            data: [<%=march7[1]%>,<%=march8[1]%>,<%=march9[1]%>,<%=march10[1]%>,<%=march11[1]%>,<%=march12[1]%>,<%=march13[1]%>]
 				        },
 				        {
 				            name: '新增疑似患者',
 				            type: 'line',
 				            stack: '总量',
-				            data: [220, 182, 191, 234, 290, 330, 310]
+				            data: [<%=march7[3]%>,<%=march8[3]%>,<%=march9[3]%>,<%=march10[3]%>,<%=march11[3]%>,<%=march12[3]%>,<%=march13[3]%>]
 				        },
 				        {
 				            name: '新增治愈',
 				            type: 'line',
 				            stack: '总量',
-				            data: [150, 232, 201, 154, 190, 330, 410]
+				            data: [<%=march7[5]%>,<%=march8[5]%>,<%=march9[5]%>,<%=march10[5]%>,<%=march11[5]%>,<%=march12[5]%>,<%=march13[5]%>]
 				        },
 				        {
 				            name: '新增死亡',
 				            type: 'line',
 				            stack: '总量',
-				            data: [320, 332, 301, 334, 390, 330, 320]
+				            data: [<%=march7[7]%>,<%=march8[7]%>,<%=march9[7]%>,<%=march10[7]%>,<%=march11[7]%>,<%=march12[7]%>,<%=march13[7]%>]
 				        }
 				    ]
 				};
