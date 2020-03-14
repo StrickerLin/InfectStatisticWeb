@@ -19,19 +19,20 @@ import java.util.List;
 public class ProvinceDAOImpl {
     public void createTable(String tableName) {
         try{
-            Connection conn = DBUtil.getConnection();
+            Connection conn = dbUtil.getConnection();
             Statement stmt = conn.createStatement();
             stmt.executeUpdate("drop table if exists "+ tableName);
-            stmt.executeUpdate( "create table  if not exists " + tableName +"(name varchar(20) PRIMARY KEY,day date ,ipIncrease int " +
+            stmt.executeUpdate( "create table  if not exists " + tableName +"(name varchar(20) ,day date ,ipIncrease int " +
                     ",spIncrease int,cureIncrease int ,deadIncrease int,ip  int,sp int ,cure int ,dead int);" );
+            conn.close();
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
+
     public void insert(Province province,String tableName){
         String sql = "insert into " + tableName +" values(?,?,?,?,?,?,?,?,?,?)";
-        try (Connection conn = DBUtil.getConnection();  PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = dbUtil.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             /*stmt.executeUpdate("drop table if exists province;");
             stmt.executeUpdate( "create table  if not exists province(name varchar(20),day date ,ip  int,sp int ,cure int ,dead int);" );//创建一个表，两列*/
             stmt.setString(1,province.getName());
@@ -56,30 +57,11 @@ public class ProvinceDAOImpl {
     public void useJson(String json){
         Json.countryParse(json);
     }
-    public void delete(Province province){
-
-    }
-    public void update(Province province){
-
-    }
-
-    public int getPeopleNum(String province){
-        String sql = "select * from today where name="+province;
-        int ip = 0;
-        try (Connection conn = DBUtil.getConnection();  PreparedStatement stmt = conn.prepareStatement(sql)) {
-            ResultSet rs = stmt.executeQuery(sql);
-            if (rs.next())
-                ip = rs.getInt("ip");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return ip;
-    }
 
     public List<Province> list(String tableName){
         List<Province> provinces=new ArrayList<Province>();
         String sql = "select * from "+tableName;
-        try (Connection c = DBUtil.getConnection(); Statement stmt = c.createStatement()) {
+        try (Connection c = dbUtil.getConnection(); Statement stmt = c.createStatement()) {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Province province = new Province();

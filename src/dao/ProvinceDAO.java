@@ -16,5 +16,5 @@ public interface ProvinceDAO {
     public void insert(Province province);
     public void delete(Province province);
     public void update(Province province);
-    public List<Province> list();
+    public List<Province> list(String today);
 }
