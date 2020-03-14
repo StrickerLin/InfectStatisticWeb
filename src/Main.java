@@ -90,6 +90,14 @@ public class Main {
                 ,"http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200312_1697813.html","http://wsjk.tj.gov.cn/art/2020/3/12/art_87_72209.html"
                 ,"http://wsjkw.sh.gov.cn/xwfb/20200312/f8ab81f4929d49a0803749fcfe032d5b.html","http://wsjkw.cq.gov.cn/syyqzx/20200312/259509.html","","");
         ProvinceDAOImpl provinceDAO = new ProvinceDAOImpl();
+        String[] names ={"河北", "山西", "辽宁", "吉林", "黑龙江", "江苏", "浙江", "安徽", "福建","江西","山东"
+                , "河南", "湖北", "湖南","广东","海南","四川","贵州","云南" ,"陕西", "甘肃","青海","台湾","内蒙古"
+                , "广西","西藏", "宁夏","新疆","北京","天津","上海", "重庆","香港","澳门"};
+        for (int i=0;i<names.length;i++){
+            provinceDAO.createTable(names[i]);
+        }
+        catchProvinceData1(data10);
+        catchProvinceData1(data11);
         provinceDAO.createTable("latest");
         for (Province province:Spider.getProvincesData()
         ) {
@@ -114,15 +122,6 @@ public class Main {
         provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8147/navid/42/stypeid/"),"黑龙江");//3-11
         provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8148/navid/42/stypeid/"),"黑龙江");//3-12
         provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8149/navid/42/stypeid/"),"黑龙江");//3-13
-
-        String[] names ={"河北", "山西", "辽宁", "吉林", "黑龙江", "江苏", "浙江", "安徽", "福建","江西","山东"
-                , "河南", "湖北", "湖南","广东","海南","四川","贵州","云南" ,"陕西", "甘肃","青海","台湾","内蒙古"
-                , "广西","西藏", "宁夏","新疆","北京","天津","上海", "重庆","香港","澳门"};
-        for (int i=0;i<names.length;i++){
-            provinceDAO.createTable(names[i]);
-        }
-        catchProvinceData1(data10);
-        catchProvinceData1(data11);
 
     }
     public static void main(String[] args) throws SQLException {
