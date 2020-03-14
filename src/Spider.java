@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
  * @Description:
  */
 class Spider {
-    
+
     public static  Province getYunnanData(String url){
         Province province = new Province();
         regUtil reg = new regUtil();
