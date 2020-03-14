@@ -17,5 +17,7 @@
 
 ## 四、构建和运行
 1、安装tomcat
+
 2、将本项目下载到%tomcatInstallDirectory%/webapp/ROOT/目录下
+
 3、到%tomcatInstallDirectory%/bin下启动startup.dat即可
