@@ -1247,10 +1247,16 @@ class Spider {
                 province.setDay(dateString);
                 for (String name:names
                      ) {
-                    if (jsonObject.getString("provinceName").substring(0,2).equals(name))
-                        province.setName(name);
-                }
+                    if (jsonObject.getString("provinceName").substring(0,2).equals(name)){
+                        if (jsonObject.getString("provinceName").substring(0,2).equals("内蒙"))
+                            province.setName("内蒙古");
+                        else if (jsonObject.getString("provinceName").substring(0,2).equals("黑龙"))
+                            province.setName("黑龙江");
+                        else
+                            province.setName(name);
+                    }
 
+                }
                 province.setIp(jsonObject.getInt("currentConfirmedCount"));
                 province.setCure(jsonObject.getInt("curedCount"));
                 province.setDead(jsonObject.getInt("deadCount"));
