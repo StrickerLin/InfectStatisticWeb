@@ -13,11 +13,10 @@ import java.sql.Statement;
  * @Version:
  * @Description:
  */
-public class DBUtil {
+public class dbUtil {
     static {
         try {
             Class.forName("org.sqlite.JDBC");
-            System.out.println("数据库驱动加载成功");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
