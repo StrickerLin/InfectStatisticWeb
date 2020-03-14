@@ -20,4 +20,6 @@
 
 2、将本项目下载到%tomcatInstallDirectory%/webapp/ROOT/目录下
 
-3、到%tomcatInstallDirectory%/bin下启动startup.dat即可
+3、修改index和detail中数据库相关信息
+
+4、到%tomcatInstallDirectory%/bin下启动startup.dat即可
