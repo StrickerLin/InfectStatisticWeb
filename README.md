@@ -2,7 +2,7 @@
 ##  一、作业链接
 [InfectStatisticWeb](https://edu.cnblogs.com/campus/fzu/2020SpringW/homework/10456)
 ## 二、结对学号
-221701101 林露 博客地址：[https://www.cnblogs.com/lu28/]()
+221701101 林露 博客地址：[https://www.cnblogs.com/lu28/](https://www.cnblogs.com/lu28/)
 221701108 李波 博客地址：[https://www.cnblogs.com/Striker-Lin/](https://www.cnblogs.com/Striker-Lin/)
 
 ## 三、项目介绍
