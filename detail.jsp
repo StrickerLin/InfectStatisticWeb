@@ -129,7 +129,7 @@ int[][] sevenDatas = getProvinceArray(con,province);
 %>
 	<div id="content">
 		<h1><%=province %>疫情详情</h1>
-		<p>注：，除黑龙江省意以外，其他省份只有（3.10和3.11两天的数据）</p>
+		<p>注：除黑龙江省以外，其他省份只有（3.10和3.11两天的数据）</p>
 		<div id="chart">
 			<div id="chart-box"></div>
 			<script type="text/javascript">
