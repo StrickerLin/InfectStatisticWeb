@@ -19,7 +19,6 @@ public class regUtil {
     private String cure = "累计治愈出院病例(\\d+)例";
     private String dead = "累计死亡病例(\\d+)例";
     private String  day = "截至(\\d+)月(\\d+)日";
-
     /*public void setIp(String ip) {
         this.ip = ip;
     }
