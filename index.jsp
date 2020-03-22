@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
-<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
-<%@ page import="com.mysql.jdbc.Driver" %>
 
 
 
@@ -10,10 +8,10 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="style/style.css">
+	<link rel="stylesheet" type="text/css" href="WebContent/style/style.css">
 	<title>某次疫情统计应用</title>
-	<script src="dist/echarts.js"></script>
-    <script src="map/js/china.js"></script>
+	<script src="WebContent/dist/echarts.js"></script>
+    <script src="WebContent/map/js/china.js"></script>
 </head>
 <body>
 <%!
@@ -97,12 +95,16 @@
 	}catch (Exception e){
 		e.printStackTrace();
 	}
+<<<<<<< Updated upstream
 	Class.forName("com.mysql.jdbc.Driver");  ////驱动程序名
 	//String url = "jdbc:sqlite://d:/软件工程作业/production/production/InfectStatisticWeb/InfectData.db"; //数据库名
     String url = "./src/InfectData.db"; //数据库名
 	String username = "";  //数据库用户名
 	String password = "";  //数据库用户密码
 	Connection con = DriverManager.getConnection(url, username, password);  //连接状态
+=======
+	Connection con = DriverManager.getConnection("jdbc:sqlite://d:/软件工程作业/production/production/InfectStatisticWeb/InfectData.db");  //连接状态
+>>>>>>> Stashed changes
 	int[] num = getAllTyeNum(con,"country");
 	int[] march7 = getSomdedayArray(con,"2020-3-7");
 	int[] march8 = getSomdedayArray(con,"2020-3-8");

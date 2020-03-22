@@ -18,11 +18,11 @@
 	}catch (Exception e){
 		e.printStackTrace();
 	}
-	Class.forName("com.mysql.jdbc.Driver");  ////驱动程序名
-	String url = "jdbc:sqlite://d:/软件工程作业/production/production/InfectStatisticWeb/InfectData.db"; //数据库名
+	//Class.forName("com.mysql.jdbc.Driver");  ////驱动程序名
+	/*String url = "jdbc:sqlite://d:/软件工程作业/production/production/InfectStatisticWeb/InfectData.db"; //数据库名
 	String username = "";  //数据库用户名
-	String password = "";  //数据库用户密码
-	Connection con = DriverManager.getConnection(url, username, password);  //连接状态
+	String password = "";  //数据库用户密码*/
+	Connection con = DriverManager.getConnection("jdbc:sqlite://d:/软件工程作业/production/production/InfectStatisticWeb/InfectData.db");  //连接状态
 %>
 <%!
 	public int[][] getProvinceArray(Connection conn,String tableName){
@@ -114,14 +114,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title><%=province %>省疫情详情</title>
-<script src="dist/echarts.js"></script>
-<script src="map/js/china.js"></script>
+<script src="WebContent/dist/echarts.js"></script>
+<script src="WebContent/map/js/china.js"></script>
 <script>
 			function returnBack(){
 				window.location.replace("index.jsp");
 			}
 		</script>
-<link rel="stylesheet" type="text/css" href="style/style.css" />
+<link rel="stylesheet" type="text/css" href="WebContent/style/style.css" />
 </head>
 <body>
 <%
