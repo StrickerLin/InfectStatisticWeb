@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
-<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
-<%@ page import="com.mysql.jdbc.Driver" %>
 
 
 
@@ -97,7 +95,6 @@
 	}catch (Exception e){
 		e.printStackTrace();
 	}
-	Class.forName("com.mysql.jdbc.Driver");  ////驱动程序名
 	String url = "jdbc:sqlite://d:/软件工程作业/production/production/InfectStatisticWeb/InfectData.db"; //数据库名
 	String username = "";  //数据库用户名
 	String password = "";  //数据库用户密码
