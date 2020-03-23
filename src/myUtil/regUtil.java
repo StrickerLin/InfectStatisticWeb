@@ -10,15 +10,15 @@ package myUtil;
  * @Description:
  */
 public class regUtil {
-    private String ipIncrease = "æ–°å¢ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹";
-    private String spIncrease = "æ–°å¢ç–‘ä¼¼ç—…ä¾‹(\\d+)ä¾‹";
-    private String cureIncrease = "æ–°å¢æ²»æ„ˆå‡ºé™¢ç—…ä¾‹(\\d+)ä¾‹";
-    private String deadIncrease = "æ–°å¢æ­»äº¡ç—…ä¾‹(\\d+)ä¾‹";
-    private String ip = "ç°æœ‰ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹";
-    private String sp = "ç°æœ‰ç–‘ä¼¼ç—…ä¾‹(\\d+)ä¾‹";
-    private String cure = "ç´¯è®¡æ²»æ„ˆå‡ºé™¢ç—…ä¾‹(\\d+)ä¾‹";
-    private String dead = "ç´¯è®¡æ­»äº¡ç—…ä¾‹(\\d+)ä¾‹";
-    private String  day = "æˆªè‡³(\\d+)æœˆ(\\d+)æ—¥";
+    private String ipIncrease = "ĞÂÔöÈ·Õï²¡Àı(\\d+)Àı";
+    private String spIncrease = "ĞÂÔöÒÉËÆ²¡Àı(\\d+)Àı";
+    private String cureIncrease = "ĞÂÔöÖÎÓú³öÔº²¡Àı(\\d+)Àı";
+    private String deadIncrease = "ĞÂÔöËÀÍö²¡Àı(\\d+)Àı";
+    private String ip = "ÏÖÓĞÈ·Õï²¡Àı(\\d+)Àı";
+    private String sp = "ÏÖÓĞÒÉËÆ²¡Àı(\\d+)Àı";
+    private String cure = "ÀÛ¼ÆÖÎÓú³öÔº²¡Àı(\\d+)Àı";
+    private String dead = "ÀÛ¼ÆËÀÍö²¡Àı(\\d+)Àı";
+    private String  day = "½ØÖÁ(\\d+)ÔÂ(\\d+)ÈÕ";
     /*public void setIp(String ip) {
         this.ip = ip;
     }
