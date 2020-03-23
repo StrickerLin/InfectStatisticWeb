@@ -13,7 +13,7 @@ import java.sql.Statement;
  * @Version:
  * @Description:
  */
-public class dbUtil {
+public class DBUtil {
     static {
         try {
             Class.forName("org.sqlite.JDBC");
