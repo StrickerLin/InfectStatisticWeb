@@ -22,7 +22,7 @@ public class Json {
     public static Province countryParse(String json) {
         Province province = new Province();
         JSONObject jsonObject = JSONObject.fromObject(json);
-        province.setName("å…¨å›½");
+        province.setName("È«¹ú");
         String day = jsonObject.getString("modifyTime");
         Date date = new Date(Long.parseLong(day));
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

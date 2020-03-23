@@ -127,8 +127,8 @@ public class Province {
     }
 
     public void printString(){
-        System.out.println("æ—¥æœŸ:"+day+' '+name + " æ–°å¢ç¡®è¯Š:" + ipIncrease + " æ–°å¢ç–‘ä¼¼:"
-                + spIncrease + " æ–°å¢æ²»æ„ˆï¼š" + cureIncrease + " æ–°å¢æ­»äº¡:"
-                + deadIncrease + " ç°æœ‰ç¡®è¯Š:"+ip+" ç°æœ‰ç–‘ä¼¼:"+sp+" ç´¯è®¡æ²»æ„ˆ:"+cure+" ç´¯è®¡æ­»äº¡:"+dead+"\n");
+        System.out.println("ÈÕÆÚ:"+day+' '+name + " ĞÂÔöÈ·Õï:" + ipIncrease + " ĞÂÔöÒÉËÆ:"
+                + spIncrease + " ĞÂÔöÖÎÓú£º" + cureIncrease + " ĞÂÔöËÀÍö:"
+                + deadIncrease + " ÏÖÓĞÈ·Õï:"+ip+" ÏÖÓĞÒÉËÆ:"+sp+" ÀÛ¼ÆÖÎÓú:"+cure+" ÀÛ¼ÆËÀÍö:"+dead+"\n");
     }
 }

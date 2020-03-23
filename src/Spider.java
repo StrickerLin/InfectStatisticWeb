@@ -1,10 +1,10 @@
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
+//import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import myUtil.regUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import pojo.HttpPojo;
 import pojo.Province;
-import sun.dc.pr.PRError;
+//import sun.dc.pr.PRError;
 
 import java.io.*;
 import java.net.URL;
@@ -46,15 +46,15 @@ class Spider {
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
-        Pattern ipPattern = Pattern.compile("ç°æœ‰ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹");
+        Pattern ipPattern = Pattern.compile("ÏÖÓĞÈ·Õï²¡Àı(\\d+)Àı");
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
         Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("æ²»æ„ˆå‡ºé™¢(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÖÎÓú³öÔº(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("æ­»äº¡(\\d+)ä¾‹");
+        Pattern deadPattern = Pattern.compile("ËÀÍö(\\d+)Àı");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("äº‘å—çœ");
+        province.setName("ÔÆÄÏÊ¡");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -87,7 +87,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("æ²³åŒ—çœ");
+        province.setName("ºÓ±±Ê¡");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -103,7 +103,7 @@ class Spider {
         //httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
         Map paramObj = new HashMap();
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
-        Pattern dayPattern = Pattern.compile("2020å¹´(\\d+)æœˆ(\\d+)æ—¥");
+        Pattern dayPattern = Pattern.compile("2020Äê(\\d+)ÔÂ(\\d+)ÈÕ");
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
         Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
@@ -113,15 +113,15 @@ class Spider {
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
-        Pattern ipPattern = Pattern.compile("ç°æœ‰(.)*ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹");
+        Pattern ipPattern = Pattern.compile("ÏÖÓĞ(.)*È·Õï²¡Àı(\\d+)Àı");
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
         Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("ç´¯è®¡æ²»æ„ˆå‡ºé™¢(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÀÛ¼ÆÖÎÓú³öÔº(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("å±±è¥¿çœ");
+        province.setName("É½Î÷Ê¡");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -137,7 +137,7 @@ class Spider {
         //httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
         Map paramObj = new HashMap();
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
-        Pattern dayPattern = Pattern.compile("2020å¹´(\\d+)æœˆ(\\d+)æ—¥");
+        Pattern dayPattern = Pattern.compile("2020Äê(\\d+)ÔÂ(\\d+)ÈÕ");
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
         Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
@@ -147,15 +147,15 @@ class Spider {
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
-        Pattern ipPattern = Pattern.compile("ç°æœ‰(\\d+)åç¡®è¯Šæ‚£è€…åœ¨é™¢æ²»ç–—");
+        Pattern ipPattern = Pattern.compile("ÏÖÓĞ(\\d+)ÃûÈ·Õï»¼ÕßÔÚÔºÖÎÁÆ");
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
-        Pattern spPattern = Pattern.compile("ç°æœ‰(\\d+)äººæ­£åœ¨æ¥å—åŒ»å­¦è§‚å¯Ÿ");
+        Pattern spPattern = Pattern.compile("ÏÖÓĞ(\\d+)ÈËÕıÔÚ½ÓÊÜÒ½Ñ§¹Û²ì");
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("æ²»æ„ˆå‡ºé™¢(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÖÎÓú³öÔº(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("æ­»äº¡(\\d+)ä¾‹");
+        Pattern deadPattern = Pattern.compile("ËÀÍö(\\d+)Àı");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("è¾½å®çœ");
+        province.setName("ÁÉÄşÊ¡");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -180,15 +180,15 @@ class Spider {
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
-        Pattern ipPattern = Pattern.compile("ç°åœ¨é™¢éš”ç¦»æ²»ç–—ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹");
+        Pattern ipPattern = Pattern.compile("ÏÖÔÚÔº¸ôÀëÖÎÁÆÈ·Õï²¡Àı(\\d+)Àı");
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
-        Pattern spPattern = Pattern.compile("ç°æœ‰ç–‘ä¼¼ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern spPattern = Pattern.compile("ÏÖÓĞÒÉËÆ²¡Àı(\\d+)Àı");
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("ç´¯è®¡æ²»æ„ˆå‡ºé™¢(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÀÛ¼ÆÖÎÓú³öÔº(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("æ­»äº¡(\\d+)ä¾‹");
+        Pattern deadPattern = Pattern.compile("ËÀÍö(\\d+)Àı");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("å‰æ—çœ");
+        province.setName("¼ªÁÖÊ¡");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -205,11 +205,11 @@ class Spider {
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
         Pattern dayPattern = Pattern.compile(reg.getDay());
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
-        Pattern ipIncreasePattern = Pattern.compile("æ–°å¢æ–°å‹å† çŠ¶ç—…æ¯’è‚ºç‚ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹");
+        Pattern ipIncreasePattern = Pattern.compile("ĞÂÔöĞÂĞÍ¹Ú×´²¡¶¾·ÎÑ×È·Õï²¡Àı(\\d+)Àı");
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
         Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
-        Pattern cureIncreasePattern = Pattern.compile("æ–°å¢å‡ºé™¢ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern cureIncreasePattern = Pattern.compile("ĞÂÔö³öÔº²¡Àı(\\d+)Àı");
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
@@ -217,11 +217,11 @@ class Spider {
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
         Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("ç´¯è®¡å‡ºé™¢ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÀÛ¼Æ³öÔº²¡Àı(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("æ±Ÿè‹çœ");
+        province.setName("½­ËÕÊ¡");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -238,11 +238,11 @@ class Spider {
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
         Pattern dayPattern = Pattern.compile(reg.getDay());
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
-        Pattern ipIncreasePattern = Pattern.compile("æ–°å¢æ–°å‹å† çŠ¶ç—…æ¯’è‚ºç‚ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹");
+        Pattern ipIncreasePattern = Pattern.compile("ĞÂÔöĞÂĞÍ¹Ú×´²¡¶¾·ÎÑ×È·Õï²¡Àı(\\d+)Àı");
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
         Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
-        Pattern cureIncreasePattern = Pattern.compile("æ–°å¢å‡ºé™¢ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern cureIncreasePattern = Pattern.compile("ĞÂÔö³öÔº²¡Àı(\\d+)Àı");
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
@@ -250,11 +250,11 @@ class Spider {
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
         Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("ç´¯è®¡å‡ºé™¢(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÀÛ¼Æ³öÔº(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("ç´¯è®¡æ­»äº¡(\\d+)ä¾‹");
+        Pattern deadPattern = Pattern.compile("ÀÛ¼ÆËÀÍö(\\d+)Àı");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("æµ™æ±Ÿçœ");
+        province.setName("Õã½­Ê¡");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -269,13 +269,13 @@ class Spider {
         httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
         Map paramObj = new HashMap();
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
-        Pattern dayPattern = Pattern.compile("(\\d+)æœˆ(\\d+)æ—¥");
+        Pattern dayPattern = Pattern.compile("(\\d+)ÔÂ(\\d+)ÈÕ");
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
         Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
         Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
-        Pattern cureIncreasePattern = Pattern.compile("æ–°å¢æ²»æ„ˆå‡ºé™¢(\\d+)ä¾‹");
+        Pattern cureIncreasePattern = Pattern.compile("ĞÂÔöÖÎÓú³öÔº(\\d+)Àı");
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
@@ -283,11 +283,11 @@ class Spider {
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
         Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("ç´¯è®¡æ²»æ„ˆå‡ºé™¢(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÀÛ¼ÆÖÎÓú³öÔº(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("å±±ä¸œçœ");
+        province.setName("É½¶«Ê¡");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -316,11 +316,11 @@ class Spider {
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
         Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("ç°æœ‰æ²»æ„ˆå‡ºé™¢ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÏÖÓĞÖÎÓú³öÔº²¡Àı(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("æ­»äº¡ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹");
+        Pattern deadPattern = Pattern.compile("ËÀÍöÈ·Õï²¡Àı(\\d+)Àı");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("é»‘é¾™æ±Ÿ");
+        province.setName("ºÚÁú½­");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -353,7 +353,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("å®‰å¾½");
+        province.setName("°²»Õ");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -370,9 +370,9 @@ class Spider {
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
         Pattern dayPattern = Pattern.compile(reg.getDay());
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
-        Pattern ipIncreasePattern = Pattern.compile("æ–°å¢æ–°å‹å† çŠ¶ç—…æ¯’è‚ºç‚ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹");
+        Pattern ipIncreasePattern = Pattern.compile("ĞÂÔöĞÂĞÍ¹Ú×´²¡¶¾·ÎÑ×È·Õï²¡Àı(\\d+)Àı");
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
-        Pattern spIncreasePattern = Pattern.compile("æ–°å¢æ–°å‹å† çŠ¶ç—…æ¯’è‚ºç‚ç–‘ä¼¼ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern spIncreasePattern = Pattern.compile("ĞÂÔöĞÂĞÍ¹Ú×´²¡¶¾·ÎÑ×ÒÉËÆ²¡Àı(\\d+)Àı");
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
         Pattern cureIncreasePattern = Pattern.compile(reg.getCureIncrease());
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
@@ -380,13 +380,13 @@ class Spider {
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
         Pattern ipPattern = Pattern.compile(reg.getIp());
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
-        Pattern spPattern = Pattern.compile("ç°æœ‰æŠ¥å‘Šæ–°å‹å† çŠ¶ç—…æ¯’è‚ºç‚ç–‘ä¼¼ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern spPattern = Pattern.compile("ÏÖÓĞ±¨¸æĞÂĞÍ¹Ú×´²¡¶¾·ÎÑ×ÒÉËÆ²¡Àı(\\d+)Àı");
         Matcher spMatcher = spPattern.matcher(htmlResult);
         Pattern curePattern = Pattern.compile(reg.getCure());
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("ç¦å»º");
+        province.setName("¸£½¨");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -407,7 +407,7 @@ class Spider {
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
         Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
-        Pattern cureIncreasePattern = Pattern.compile("æ–°å¢å‡ºé™¢ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern cureIncreasePattern = Pattern.compile("ĞÂÔö³öÔº²¡Àı(\\d+)Àı");
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
@@ -415,11 +415,11 @@ class Spider {
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
         Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("ç´¯è®¡å‡ºé™¢ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÀÛ¼Æ³öÔº²¡Àı(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("æ±Ÿè¥¿");
+        province.setName("½­Î÷");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -436,7 +436,7 @@ class Spider {
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
         Pattern dayPattern = Pattern.compile(reg.getDay());
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
-        Pattern ipIncreasePattern = Pattern.compile("æ–°å¢æœ¬åœ°æ–°å† è‚ºç‚ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹");
+        Pattern ipIncreasePattern = Pattern.compile("ĞÂÔö±¾µØĞÂ¹Ú·ÎÑ×È·Õï²¡Àı(\\d+)Àı");
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
         Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
@@ -448,11 +448,11 @@ class Spider {
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
         Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("ç´¯è®¡å‡ºé™¢ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÀÛ¼Æ³öÔº²¡Àı(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("æ²³å—");
+        province.setName("ºÓÄÏ");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -467,25 +467,25 @@ class Spider {
         httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
         Map paramObj = new HashMap();
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
-        Pattern dayPattern = Pattern.compile("æˆªè‡³2020å¹´(.)*æœˆ(.)*æ—¥");
+        Pattern dayPattern = Pattern.compile("½ØÖÁ2020Äê(.)*ÔÂ(.)*ÈÕ");
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
-        Pattern ipIncreasePattern = Pattern.compile("å…¨çœæ–°å¢æ–°å† è‚ºç‚ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹");
+        Pattern ipIncreasePattern = Pattern.compile("È«Ê¡ĞÂÔöĞÂ¹Ú·ÎÑ×È·Õï²¡Àı(\\d+)Àı");
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
-        Pattern spIncreasePattern = Pattern.compile("å½“æ—¥æ–°å¢(\\d+)äºº");
+        Pattern spIncreasePattern = Pattern.compile("µ±ÈÕĞÂÔö(\\d+)ÈË");
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
-        Pattern cureIncreasePattern = Pattern.compile("å…¨çœæ–°å¢å‡ºé™¢(\\d+)ä¾‹");
+        Pattern cureIncreasePattern = Pattern.compile("È«Ê¡ĞÂÔö³öÔº(\\d+)Àı");
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
-        Pattern deadIncreasePattern = Pattern.compile("å…¨çœæ–°å¢ç—…äº¡(\\d+)ä¾‹");
+        Pattern deadIncreasePattern = Pattern.compile("È«Ê¡ĞÂÔö²¡Íö(\\d+)Àı");
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
-        Pattern ipPattern = Pattern.compile("ç›®å‰ä»åœ¨é™¢æ²»ç–—(.)*ä¾‹");
+        Pattern ipPattern = Pattern.compile("Ä¿Ç°ÈÔÔÚÔºÖÎÁÆ(.)*Àı");
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
-        Pattern spPattern = Pattern.compile("ç°æœ‰ç–‘ä¼¼ç—…ä¾‹(.)*äºº");
+        Pattern spPattern = Pattern.compile("ÏÖÓĞÒÉËÆ²¡Àı(.)*ÈË");
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("å…¨çœç´¯è®¡æ²»æ„ˆå‡ºé™¢(.)*ä¾‹");
+        Pattern curePattern = Pattern.compile("È«Ê¡ÀÛ¼ÆÖÎÓú³öÔº(.)*Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("å…¨çœç´¯è®¡ç—…äº¡(.)*ä¾‹");
+        Pattern deadPattern = Pattern.compile("È«Ê¡ÀÛ¼Æ²¡Íö(.)*Àı");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("æ¹–åŒ—");
+        province.setName("ºş±±");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -506,7 +506,7 @@ class Spider {
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
         Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
-        Pattern cureIncreasePattern = Pattern.compile("æ–°å¢å‡ºé™¢ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern cureIncreasePattern = Pattern.compile("ĞÂÔö³öÔº²¡Àı(\\d+)Àı");
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
@@ -518,7 +518,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("æ¹–å—");
+        province.setName("ºşÄÏ");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -539,19 +539,19 @@ class Spider {
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
         Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
-        Pattern cureIncreasePattern = Pattern.compile("æ–°å¢å‡ºé™¢(\\d+)ä¾‹");
+        Pattern cureIncreasePattern = Pattern.compile("ĞÂÔö³öÔº(\\d+)Àı");
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
-        Pattern ipPattern = Pattern.compile("åœ¨é™¢çš„(\\d+)ä¾‹ç¡®è¯Šç—…ä¾‹");
+        Pattern ipPattern = Pattern.compile("ÔÚÔºµÄ(\\d+)ÀıÈ·Õï²¡Àı");
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
-        Pattern spPattern = Pattern.compile("æœ‰ç–‘ä¼¼ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern spPattern = Pattern.compile("ÓĞÒÉËÆ²¡Àı(\\d+)Àı");
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("ç´¯è®¡å‡ºé™¢(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÀÛ¼Æ³öÔº(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("ç´¯è®¡æ­»äº¡(\\d+)ä¾‹");
+        Pattern deadPattern = Pattern.compile("ÀÛ¼ÆËÀÍö(\\d+)Àı");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("å¹¿ä¸œ");
+        province.setName("¹ã¶«");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -572,7 +572,7 @@ class Spider {
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
         Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
-        Pattern cureIncreasePattern = Pattern.compile("æ–°å¢å‡ºé™¢(\\d+)ä¾‹");
+        Pattern cureIncreasePattern = Pattern.compile("ĞÂÔö³öÔº(\\d+)Àı");
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
@@ -580,11 +580,11 @@ class Spider {
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
         Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("ï¼Œå‡ºé™¢ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("£¬³öÔº²¡Àı(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("ï¼Œæ­»äº¡ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern deadPattern = Pattern.compile("£¬ËÀÍö²¡Àı(\\d+)Àı");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("æµ·å—");
+        province.setName("º£ÄÏ");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -599,7 +599,7 @@ class Spider {
         httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
         Map paramObj = new HashMap();
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
-        Pattern dayPattern = Pattern.compile("(\\d+)æœˆ(\\d+)æ—¥0-24æ—¶");
+        Pattern dayPattern = Pattern.compile("(\\d+)ÔÂ(\\d+)ÈÕ0-24Ê±");
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
         Pattern ipIncreasePattern = Pattern.compile(reg.getIpIncrease());
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
@@ -609,15 +609,15 @@ class Spider {
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
-        Pattern ipPattern = Pattern.compile("æ­£åœ¨ä½é™¢éš”ç¦»æ²»ç–—(\\d+)äºº");
+        Pattern ipPattern = Pattern.compile("ÕıÔÚ×¡Ôº¸ôÀëÖÎÁÆ(\\d+)ÈË");
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
         Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("æ²»æ„ˆå‡ºé™¢(\\d+)äºº");
+        Pattern curePattern = Pattern.compile("ÖÎÓú³öÔº(\\d+)ÈË");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("æ­»äº¡(\\d+)äºº");
+        Pattern deadPattern = Pattern.compile("ËÀÍö(\\d+)ÈË");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("å››å·");
+        province.setName("ËÄ´¨");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -642,15 +642,15 @@ class Spider {
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
-        Pattern ipPattern = Pattern.compile("åœ¨é™¢æ²»ç–—(\\d+)ä¾‹");
+        Pattern ipPattern = Pattern.compile("ÔÚÔºÖÎÁÆ(\\d+)Àı");
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
-        Pattern spPattern = Pattern.compile("ç–‘ä¼¼ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern spPattern = Pattern.compile("ÒÉËÆ²¡Àı(\\d+)Àı");
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("æ²»æ„ˆå‡ºé™¢(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÖÎÓú³öÔº(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("æ­»äº¡(\\d+)ä¾‹");
+        Pattern deadPattern = Pattern.compile("ËÀÍö(\\d+)Àı");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("è´µå·");
+        province.setName("¹óÖİ");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -667,9 +667,9 @@ class Spider {
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
         Pattern dayPattern = Pattern.compile(reg.getDay());
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
-        Pattern ipIncreasePattern = Pattern.compile("æ–°å¢æ–°å† è‚ºç‚ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹");
+        Pattern ipIncreasePattern = Pattern.compile("ĞÂÔöĞÂ¹Ú·ÎÑ×È·Õï²¡Àı(\\d+)Àı");
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
-        Pattern spIncreasePattern = Pattern.compile("æ–°å¢ç–‘ä¼¼ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern spIncreasePattern = Pattern.compile("ĞÂÔöÒÉËÆ²¡Àı(\\d+)Àı");
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
         Pattern cureIncreasePattern = Pattern.compile("reg.getCureIncrease()");
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
@@ -677,13 +677,13 @@ class Spider {
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
         Pattern ipPattern = Pattern.compile(reg.getIp());
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
-        Pattern spPattern = Pattern.compile("å…¨çœç°æœ‰ç–‘ä¼¼ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern spPattern = Pattern.compile("È«Ê¡ÏÖÓĞÒÉËÆ²¡Àı(\\d+)Àı");
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("(\\d+)ä¾‹æ²»æ„ˆå‡ºé™¢");
+        Pattern curePattern = Pattern.compile("(\\d+)ÀıÖÎÓú³öÔº");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("(\\d+)ä¾‹æ­»äº¡");
+        Pattern deadPattern = Pattern.compile("(\\d+)ÀıËÀÍö");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("é™•è¥¿");
+        province.setName("ÉÂÎ÷");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -698,9 +698,9 @@ class Spider {
         httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
         Map paramObj = new HashMap();
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
-        Pattern dayPattern = Pattern.compile("(\\d+)æœˆ(\\d+)æ—¥");
+        Pattern dayPattern = Pattern.compile("(\\d+)ÔÂ(\\d+)ÈÕ");
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
-        Pattern ipIncreasePattern = Pattern.compile("æ–°å¢(\\d+)ä¾‹æ–°å† è‚ºç‚ç¡®è¯Šç—…ä¾‹");
+        Pattern ipIncreasePattern = Pattern.compile("ĞÂÔö(\\d+)ÀıĞÂ¹Ú·ÎÑ×È·Õï²¡Àı");
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
         Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
@@ -712,11 +712,11 @@ class Spider {
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
         Pattern spPattern = Pattern.compile(reg.getSp());
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("ç´¯è®¡æ²»æ„ˆå‡ºé™¢(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÀÛ¼ÆÖÎÓú³öÔº(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("ç´¯è®¡æ­»äº¡ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern deadPattern = Pattern.compile("ÀÛ¼ÆËÀÍö²¡Àı(\\d+)Àı");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("ç”˜è‚ƒ");
+        province.setName("¸ÊËà");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -749,7 +749,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("é’æµ·");
+        province.setName("Çàº£");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -765,9 +765,9 @@ class Spider {
         httpPojo.setHttpReferer("http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml");
         Map paramObj = new HashMap();
         String htmlResult = httpSendGet(url, paramObj, httpPojo);
-        Pattern dayPattern = Pattern.compile("2020å¹´(\\d+)æœˆ(\\d+)æ—¥");
+        Pattern dayPattern = Pattern.compile("2020Äê(\\d+)ÔÂ(\\d+)ÈÕ");
         Matcher dayMatcher = dayPattern.matcher(htmlResult);
-        Pattern ipIncreasePattern = Pattern.compile("æ–°å¢æ–°å† è‚ºç‚ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹");
+        Pattern ipIncreasePattern = Pattern.compile("ĞÂÔöĞÂ¹Ú·ÎÑ×È·Õï²¡Àı(\\d+)Àı");
         Matcher ipIncreaseMatcher = ipIncreasePattern.matcher(htmlResult);
         Pattern spIncreasePattern = Pattern.compile(reg.getSpIncrease());
         Matcher spIncreaseMatcher = spIncreasePattern.matcher(htmlResult);
@@ -775,15 +775,15 @@ class Spider {
         Matcher cureIncreaseMatcher = cureIncreasePattern.matcher(htmlResult);
         Pattern deadIncreasePattern = Pattern.compile(reg.getDeadIncrease());
         Matcher deadIncreaseMatcher = deadIncreasePattern.matcher(htmlResult);
-        Pattern ipPattern = Pattern.compile("ç°å­˜ç¡®è¯Šç—…ä¾‹(\\d+)ä¾‹");
+        Pattern ipPattern = Pattern.compile("ÏÖ´æÈ·Õï²¡Àı(\\d+)Àı");
         Matcher ipMatcher = ipPattern.matcher(htmlResult);
-        Pattern spPattern = Pattern.compile("ç–‘ä¼¼ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern spPattern = Pattern.compile("ÒÉËÆ²¡Àı(\\d+)Àı");
         Matcher spMatcher = spPattern.matcher(htmlResult);
-        Pattern curePattern = Pattern.compile("æ²»æ„ˆå‡ºé™¢(\\d+)ä¾‹");
+        Pattern curePattern = Pattern.compile("ÖÎÓú³öÔº(\\d+)Àı");
         Matcher cureMatcher = curePattern.matcher(htmlResult);
-        Pattern deadPattern = Pattern.compile("æ­»äº¡ç—…ä¾‹(\\d+)ä¾‹");
+        Pattern deadPattern = Pattern.compile("ËÀÍö²¡Àı(\\d+)Àı");
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("å†…è’™å¤");
+        province.setName("ÄÚÃÉ¹Å");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -816,7 +816,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("å¹¿è¥¿");
+        province.setName("¹ãÎ÷");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -849,7 +849,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("è¥¿è—");
+        province.setName("Î÷²Ø");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -882,7 +882,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("å®å¤");
+        province.setName("ÄşÏÄ");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -916,7 +916,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("æ–°ç–†");
+        province.setName("ĞÂ½®");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -949,7 +949,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("åŒ—äº¬");
+        province.setName("±±¾©");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -982,7 +982,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("å¤©æ´¥");
+        province.setName("Ìì½ò");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -1015,7 +1015,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("ä¸Šæµ·");
+        province.setName("ÉÏº£");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -1048,7 +1048,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("é‡åº†");
+        province.setName("ÖØÇì");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -1081,7 +1081,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("å°æ¹¾");
+        province.setName("Ì¨Íå");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -1114,7 +1114,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("é¦™æ¸¯");
+        province.setName("Ïã¸Û");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -1147,7 +1147,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("æ¾³é—¨");
+        province.setName("°ÄÃÅ");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -1202,7 +1202,7 @@ class Spider {
         Matcher cureMatcher = curePattern.matcher(htmlResult);
         Pattern deadPattern = Pattern.compile(reg.getDead());
         Matcher deadMatcher = deadPattern.matcher(htmlResult);
-        province.setName("å…¨å›½");
+        province.setName("È«¹ú");
         return getProvince(province, dayMatcher, ipIncreaseMatcher, spIncreaseMatcher, cureIncreaseMatcher, deadIncreaseMatcher, ipMatcher, spMatcher, cureMatcher, deadMatcher);
     }
 
@@ -1224,9 +1224,9 @@ class Spider {
         Matcher DateMatcher = DatePattern.matcher(htmlResult);
         String result = "";
         String modifyTime = "";
-        String[] names ={"æ²³åŒ—", "å±±è¥¿", "è¾½å®", "å‰æ—", "é»‘é¾™", "æ±Ÿè‹", "æµ™æ±Ÿ", "å®‰å¾½", "ç¦å»º","æ±Ÿè¥¿","å±±ä¸œ"
-                , "æ²³å—", "æ¹–åŒ—", "æ¹–å—","å¹¿ä¸œ","æµ·å—","å››å·","è´µå·","äº‘å—" ,"é™•è¥¿", "ç”˜è‚ƒ","é’æµ·","å°æ¹¾","å†…è’™"
-                , "å¹¿è¥¿","è¥¿è—", "å®å¤","æ–°ç–†","åŒ—äº¬","å¤©æ´¥","ä¸Šæµ·", "é‡åº†","é¦™æ¸¯","æ¾³é—¨"};
+        String[] names ={"ºÓ±±", "É½Î÷", "ÁÉÄş", "¼ªÁÖ", "ºÚÁú", "½­ËÕ", "Õã½­", "°²»Õ", "¸£½¨","½­Î÷","É½¶«"
+                , "ºÓÄÏ", "ºş±±", "ºşÄÏ","¹ã¶«","º£ÄÏ","ËÄ´¨","¹óÖİ","ÔÆÄÏ" ,"ÉÂÎ÷", "¸ÊËà","Çàº£","Ì¨Íå","ÄÚÃÉ"
+                , "¹ãÎ÷","Î÷²Ø", "ÄşÏÄ","ĞÂ½®","±±¾©","Ìì½ò","ÉÏº£", "ÖØÇì","Ïã¸Û","°ÄÃÅ"};
         if (DateMatcher.find()){
             result = DateMatcher.group(1);
             JSONObject jsonObject = JSONObject.fromObject(result);
@@ -1248,10 +1248,10 @@ class Spider {
                 for (String name:names
                      ) {
                     if (jsonObject.getString("provinceName").substring(0,2).equals(name)){
-                        if (jsonObject.getString("provinceName").substring(0,2).equals("å†…è’™"))
-                            province.setName("å†…è’™å¤");
-                        else if (jsonObject.getString("provinceName").substring(0,2).equals("é»‘é¾™"))
-                            province.setName("é»‘é¾™æ±Ÿ");
+                        if (jsonObject.getString("provinceName").substring(0,2).equals("ÄÚÃÉ"))
+                            province.setName("ÄÚÃÉ¹Å");
+                        else if (jsonObject.getString("provinceName").substring(0,2).equals("ºÚÁú"))
+                            province.setName("ºÚÁú½­");
                         else
                             province.setName(name);
                     }
@@ -1264,7 +1264,7 @@ class Spider {
             }
             /*JSONObject jsonObject = JSONObject.fromObject(array.getString(0));
             String provinceName = jsonObject.getString("provinceName");
-            System.out.println("provinceNameï¼š"+provinceName);//Province country = Json.countryParse(Spider.getCountryStatisticsService());*/
+            System.out.println("provinceName£º"+provinceName);//Province country = Json.countryParse(Spider.getCountryStatisticsService());*/
         }
         return provinces;
     }
@@ -1278,7 +1278,7 @@ class Spider {
             URL realURL = new URL(urlName);
             URLConnection conn = realURL.openConnection();
             String ip = randIP();
-            //System.out.println("ç›®å‰ä¼ªé€ çš„ipï¼š" + ip);
+            //System.out.println("Ä¿Ç°Î±ÔìµÄip£º" + ip);
             conn.setRequestProperty("X-Forwarded-For", ip);
             conn.setRequestProperty("HTTP_X_FORWARDED_FOR", ip);
             conn.setRequestProperty("HTTP_CLIENT_IP", ip);
@@ -1287,8 +1287,8 @@ class Spider {
             conn.setRequestProperty("accept", httpPojo.getHttpAccept());
             conn.setRequestProperty("connection", httpPojo.getHttpConnection());
             conn.setRequestProperty("user-agent", httpPojo.getHttpUserAgent());
-            conn.setRequestProperty("Referer", httpPojo.getHttpReferer()); //ä¼ªé€ è®¿é—®æ¥æº
-            conn.setRequestProperty("Origin", httpPojo.getHttpOrigin()); //ä¼ªé€ è®¿é—®åŸŸå
+            conn.setRequestProperty("Referer", httpPojo.getHttpReferer()); //Î±Ôì·ÃÎÊÀ´Ô´
+            conn.setRequestProperty("Origin", httpPojo.getHttpOrigin()); //Î±Ôì·ÃÎÊÓòÃû
             conn.connect();
             Map<String, List<String>> map = conn.getHeaderFields();
             for (String s : map.keySet()) {

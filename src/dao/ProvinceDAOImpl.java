@@ -19,7 +19,7 @@ import java.util.List;
 public class ProvinceDAOImpl {
     public void createTable(String tableName) {
         try{
-            Connection conn = dbUtil.getConnection();
+            Connection conn = DBUtil.getConnection();
             Statement stmt = conn.createStatement();
             stmt.executeUpdate("drop table if exists "+ tableName);
             stmt.executeUpdate( "create table  if not exists " + tableName +"(name varchar(20) ,day date ,ipIncrease int " +
@@ -32,9 +32,9 @@ public class ProvinceDAOImpl {
 
     public void insert(Province province,String tableName){
         String sql = "insert into " + tableName +" values(?,?,?,?,?,?,?,?,?,?)";
-        try (Connection conn = dbUtil.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = DBUtil.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             /*stmt.executeUpdate("drop table if exists province;");
-            stmt.executeUpdate( "create table  if not exists province(name varchar(20),day date ,ip  int,sp int ,cure int ,dead int);" );//ÂàõÂª∫‰∏Ä‰∏™Ë°®Ôºå‰∏§Âàó*/
+            stmt.executeUpdate( "create table  if not exists province(name varchar(20),day date ,ip  int,sp int ,cure int ,dead int);" );//¥¥Ω®“ª∏ˆ±Ì£¨¡Ω¡–*/
             stmt.setString(1,province.getName());
             stmt.setString(2,province.getDay());
             stmt.setInt(3,province.getIpIncrease());
@@ -45,7 +45,7 @@ public class ProvinceDAOImpl {
             stmt.setInt(8,province.getSp());
             stmt.setInt(9,province.getCure());
             stmt.setInt(10,province.getDead());
-            stmt.execute(); //ÊèíÂÖ•Êï∞ÊçÆ
+            stmt.execute(); //≤Â»Î ˝æ›
             conn.close();
         } catch (SQLiteException e) {
             e.printStackTrace();
@@ -61,7 +61,7 @@ public class ProvinceDAOImpl {
     public List<Province> list(String tableName){
         List<Province> provinces=new ArrayList<Province>();
         String sql = "select * from "+tableName;
-        try (Connection c = dbUtil.getConnection(); Statement stmt = c.createStatement()) {
+        try (Connection c = DBUtil.getConnection(); Statement stmt = c.createStatement()) {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Province province = new Province();

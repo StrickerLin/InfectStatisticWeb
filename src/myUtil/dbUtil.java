@@ -6,14 +6,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 /**
  * @PackgeName: util
- * @ClassName: DBUtil
+ * @ClassName: dbUtil
  * @Author: ll
  * Date: 2020/3/11
  * project name: InfectStatisticWeb
  * @Version:
  * @Description:
  */
-public class dbUtil {
+public class DBUtil {
     static {
         try {
             Class.forName("org.sqlite.JDBC");
