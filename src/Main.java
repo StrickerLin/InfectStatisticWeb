@@ -1,11 +1,12 @@
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+
+//import net.sf.json.JSONArray;
+//import net.sf.json.JSONObject;
 import pojo.Province;
 import dao.*;
-import myUtil.*;
-import sun.security.provider.ConfigFile;
+//import myUtil.*;
+//import sun.security.provider.ConfigFile;
 
-import java.net.ServerSocket;
+//import java.net.ServerSocket;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
@@ -19,40 +20,40 @@ public class Main {
 
     public static void catchProvinceData1(List<String> website) {
         ProvinceDAOImpl provinceDAO = new ProvinceDAOImpl();
-        provinceDAO.insert(Spider.getHebeiData(website.get(0)), "æ²³åŒ—");
-        provinceDAO.insert(Spider.getShanxiData(website.get(1)), "å±±è¥¿");
-        provinceDAO.insert(Spider.getLiaoNingData(website.get(2)), "è¾½å®");
-        provinceDAO.insert(Spider.getJiLinData(website.get(3)), "å‰æ—");
-        provinceDAO.insert(Spider.getHeilongjiangData(website.get(4)), "é»‘é¾™æ±Ÿ");
-        provinceDAO.insert(Spider.getJiangsuData(website.get(5)), "æ±Ÿè‹");
-        provinceDAO.insert(Spider.getZhejiangData(website.get(6)), "æµ™æ±Ÿ");
-        provinceDAO.insert(Spider.getAnhuiData(website.get(7)), "å®‰å¾½");
-        provinceDAO.insert(Spider.getFujianData(website.get(8)), "ç¦å»º");
-        provinceDAO.insert(Spider.getJiangxiData(website.get(9)), "æ±Ÿè¥¿");
-        provinceDAO.insert(Spider.getShandongData(website.get(10)), "å±±ä¸œ");
-        provinceDAO.insert(Spider.getHenanData(website.get(11)), "æ²³å—");
-        provinceDAO.insert(Spider.getHubeiData(website.get(12)), "æ¹–åŒ—");
-        provinceDAO.insert(Spider.getHunanData(website.get(13)), "æ¹–å—");
-        provinceDAO.insert(Spider.getGuangdongData(website.get(14)), "å¹¿ä¸œ");
-        provinceDAO.insert(Spider.getHainanData(website.get(15)), "æµ·å—");
-        provinceDAO.insert(Spider.getSichuanData(website.get(16)), "å››å·");
-        provinceDAO.insert(Spider.getGuizhouData(website.get(17)), "è´µå·");
-        provinceDAO.insert(Spider.getYunnanData(website.get(18)), "äº‘å—");
-        provinceDAO.insert(Spider.getShaanxiData(website.get(19)), "å±±è¥¿");
-        provinceDAO.insert(Spider.getGansuData(website.get(20)), "ç”˜è‚ƒ");
-        provinceDAO.insert(Spider.getQinghaiData(website.get(21)), "é’æµ·");
-        provinceDAO.insert(Spider.getTaiwanData(website.get(22)), "å°æ¹¾");
-        provinceDAO.insert(Spider.getNeimenguData(website.get(23)), "å†…è’™å¤");
-        provinceDAO.insert(Spider.getGuangxiData(website.get(24)), "å¹¿è¥¿");
-        provinceDAO.insert(Spider.getXizangData(website.get(25)), "è¥¿è—");
-        provinceDAO.insert(Spider.getNingxiaData(website.get(26)), "å®å¤");
-        provinceDAO.insert(Spider.getXinjiangData(website.get(27)), "æ–°ç–†");
-        provinceDAO.insert(Spider.getBeijingData(website.get(28)), "åŒ—äº¬");
-        provinceDAO.insert(Spider.getTianjinData(website.get(29)), "å¤©æ´¥");
-        provinceDAO.insert(Spider.getShanghaiData(website.get(30)), "ä¸Šæµ·");
-        provinceDAO.insert(Spider.getChongqingData(website.get(31)), "é‡åº†");
-        provinceDAO.insert(Spider.getXianggangData(website.get(32)), "é¦™æ¸¯");
-        provinceDAO.insert(Spider.getAomenData(website.get(33)), "æ¾³é—¨");
+        provinceDAO.insert(Spider.getHebeiData(website.get(0)), "ºÓ±±");
+        provinceDAO.insert(Spider.getShanxiData(website.get(1)), "É½Î÷");
+        provinceDAO.insert(Spider.getLiaoNingData(website.get(2)), "ÁÉÄş");
+        provinceDAO.insert(Spider.getJiLinData(website.get(3)), "¼ªÁÖ");
+        provinceDAO.insert(Spider.getHeilongjiangData(website.get(4)), "ºÚÁú½­");
+        provinceDAO.insert(Spider.getJiangsuData(website.get(5)), "½­ËÕ");
+        provinceDAO.insert(Spider.getZhejiangData(website.get(6)), "Õã½­");
+        provinceDAO.insert(Spider.getAnhuiData(website.get(7)), "°²»Õ");
+        provinceDAO.insert(Spider.getFujianData(website.get(8)), "¸£½¨");
+        provinceDAO.insert(Spider.getJiangxiData(website.get(9)), "½­Î÷");
+        provinceDAO.insert(Spider.getShandongData(website.get(10)), "É½¶«");
+        provinceDAO.insert(Spider.getHenanData(website.get(11)), "ºÓÄÏ");
+        provinceDAO.insert(Spider.getHubeiData(website.get(12)), "ºş±±");
+        provinceDAO.insert(Spider.getHunanData(website.get(13)), "ºşÄÏ");
+        provinceDAO.insert(Spider.getGuangdongData(website.get(14)), "¹ã¶«");
+        provinceDAO.insert(Spider.getHainanData(website.get(15)), "º£ÄÏ");
+        provinceDAO.insert(Spider.getSichuanData(website.get(16)), "ËÄ´¨");
+        provinceDAO.insert(Spider.getGuizhouData(website.get(17)), "¹óÖİ");
+        provinceDAO.insert(Spider.getYunnanData(website.get(18)), "ÔÆÄÏ");
+        provinceDAO.insert(Spider.getShaanxiData(website.get(19)), "É½Î÷");
+        provinceDAO.insert(Spider.getGansuData(website.get(20)), "¸ÊËà");
+        provinceDAO.insert(Spider.getQinghaiData(website.get(21)), "Çàº£");
+        provinceDAO.insert(Spider.getTaiwanData(website.get(22)), "Ì¨Íå");
+        provinceDAO.insert(Spider.getNeimenguData(website.get(23)), "ÄÚÃÉ¹Å");
+        provinceDAO.insert(Spider.getGuangxiData(website.get(24)), "¹ãÎ÷");
+        provinceDAO.insert(Spider.getXizangData(website.get(25)), "Î÷²Ø");
+        provinceDAO.insert(Spider.getNingxiaData(website.get(26)), "ÄşÏÄ");
+        provinceDAO.insert(Spider.getXinjiangData(website.get(27)), "ĞÂ½®");
+        provinceDAO.insert(Spider.getBeijingData(website.get(28)), "±±¾©");
+        provinceDAO.insert(Spider.getTianjinData(website.get(29)), "Ìì½ò");
+        provinceDAO.insert(Spider.getShanghaiData(website.get(30)), "ÉÏº£");
+        provinceDAO.insert(Spider.getChongqingData(website.get(31)), "ÖØÇì");
+        provinceDAO.insert(Spider.getXianggangData(website.get(32)), "Ïã¸Û");
+        provinceDAO.insert(Spider.getAomenData(website.get(33)), "°ÄÃÅ");
     }
 
     public static  void initData(){
@@ -90,9 +91,9 @@ public class Main {
                 ,"http://wjw.beijing.gov.cn/xwzx_20031/wnxw/202003/t20200312_1697813.html","http://wsjk.tj.gov.cn/art/2020/3/12/art_87_72209.html"
                 ,"http://wsjkw.sh.gov.cn/xwfb/20200312/f8ab81f4929d49a0803749fcfe032d5b.html","http://wsjkw.cq.gov.cn/syyqzx/20200312/259509.html","","");
         ProvinceDAOImpl provinceDAO = new ProvinceDAOImpl();
-        String[] names ={"æ²³åŒ—", "å±±è¥¿", "è¾½å®", "å‰æ—", "é»‘é¾™æ±Ÿ", "æ±Ÿè‹", "æµ™æ±Ÿ", "å®‰å¾½", "ç¦å»º","æ±Ÿè¥¿","å±±ä¸œ"
-                , "æ²³å—", "æ¹–åŒ—", "æ¹–å—","å¹¿ä¸œ","æµ·å—","å››å·","è´µå·","äº‘å—" ,"é™•è¥¿", "ç”˜è‚ƒ","é’æµ·","å°æ¹¾","å†…è’™å¤"
-                , "å¹¿è¥¿","è¥¿è—", "å®å¤","æ–°ç–†","åŒ—äº¬","å¤©æ´¥","ä¸Šæµ·", "é‡åº†","é¦™æ¸¯","æ¾³é—¨"};
+        String[] names ={"ºÓ±±", "É½Î÷", "ÁÉÄş", "¼ªÁÖ", "ºÚÁú½­", "½­ËÕ", "Õã½­", "°²»Õ", "¸£½¨","½­Î÷","É½¶«"
+                , "ºÓÄÏ", "ºş±±", "ºşÄÏ","¹ã¶«","º£ÄÏ","ËÄ´¨","¹óÖİ","ÔÆÄÏ" ,"ÉÂÎ÷", "¸ÊËà","Çàº£","Ì¨Íå","ÄÚÃÉ¹Å"
+                , "¹ãÎ÷","Î÷²Ø", "ÄşÏÄ","ĞÂ½®","±±¾©","Ìì½ò","ÉÏº£", "ÖØÇì","Ïã¸Û","°ÄÃÅ"};
         for (int i=0;i<names.length;i++){
             provinceDAO.createTable(names[i]);
         }
@@ -101,34 +102,34 @@ public class Main {
         provinceDAO.createTable("latest");
         for (Province province:Spider.getProvincesData()
         ) {
-            //å…¬é¸¡åœ°å›¾æ•°æ®
+            //¹«¼¦µØÍ¼Êı¾İ
             provinceDAO.insert(province,"latest");
         }
         provinceDAO.createTable("country");
-        //å…¨å›½å„ç§è¶‹åŠ¿å›¾æ•°æ®
-        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/08/c_1125679196.htm"),"country");//3.07çš„æ•°æ®
-        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/09/c_1125682837.htm"),"country");//3.08çš„æ•°æ®
-        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/10/c_1125688175.htm"),"country");//3.09çš„æ•°æ®
-        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/11/c_1125694000.htm"),"country");//3.10çš„æ•°æ®
-        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/12/c_1125699532.htm"),"country");//3.11çš„æ•°æ®
-        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/13/c_1125706520.htm"),"country");//3.12çš„æ•°æ®
-        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/14/c_1125711265.htm"),"country");//3.13çš„æ•°æ®
-        //è¯¦ç»†çœä»½æ•°æ®
-        provinceDAO.createTable("é»‘é¾™æ±Ÿ");
-        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8142/navid/42/stypeid/"),"é»‘é¾™æ±Ÿ");//3-7
-        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8144/navid/42/stypeid/"),"é»‘é¾™æ±Ÿ");//3-8
-        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8145/navid/42/stypeid/"),"é»‘é¾™æ±Ÿ");//3-9
-        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8146/navid/42/stypeid/"),"é»‘é¾™æ±Ÿ");//3-10
-        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8147/navid/42/stypeid/"),"é»‘é¾™æ±Ÿ");//3-11
-        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8148/navid/42/stypeid/"),"é»‘é¾™æ±Ÿ");//3-12
-        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8149/navid/42/stypeid/"),"é»‘é¾™æ±Ÿ");//3-13
+        //È«¹ú¸÷ÖÖÇ÷ÊÆÍ¼Êı¾İ
+        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/08/c_1125679196.htm"),"country");//3.07µÄÊı¾İ
+        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/09/c_1125682837.htm"),"country");//3.08µÄÊı¾İ
+        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/10/c_1125688175.htm"),"country");//3.09µÄÊı¾İ
+        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/11/c_1125694000.htm"),"country");//3.10µÄÊı¾İ
+        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/12/c_1125699532.htm"),"country");//3.11µÄÊı¾İ
+        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/13/c_1125706520.htm"),"country");//3.12µÄÊı¾İ
+        provinceDAO.insert(Spider.getGovCountryData("http://www.xinhuanet.com/politics/2020-03/14/c_1125711265.htm"),"country");//3.13µÄÊı¾İ
+        //ÏêÏ¸Ê¡·İÊı¾İ
+        provinceDAO.createTable("ºÚÁú½­");
+        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8142/navid/42/stypeid/"),"ºÚÁú½­");//3-7
+        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8144/navid/42/stypeid/"),"ºÚÁú½­");//3-8
+        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8145/navid/42/stypeid/"),"ºÚÁú½­");//3-9
+        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8146/navid/42/stypeid/"),"ºÚÁú½­");//3-10
+        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8147/navid/42/stypeid/"),"ºÚÁú½­");//3-11
+        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8148/navid/42/stypeid/"),"ºÚÁú½­");//3-12
+        provinceDAO.insert(Spider.getHeilongjiangData("http://wsjkw.hlj.gov.cn/index.php/Home/Zwgk/show/newsid/8149/navid/42/stypeid/"),"ºÚÁú½­");//3-13
 
     }
     public static void main(String[] args) throws SQLException {
         try{
-            System.out.println("æŠ“å–æ•°æ®ä¸­...");
+            System.out.println("×¥È¡Êı¾İÖĞ...");
             initData();
-            System.out.println("æ•°æ®åˆå§‹åŒ–æˆåŠŸ");
+            System.out.println("Êı¾İ³õÊ¼»¯³É¹¦");
         }catch (Exception e){
             e.printStackTrace();
         }
