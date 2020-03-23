@@ -22,7 +22,7 @@
 	/*String url = "jdbc:sqlite://d:/软件工程作业/production/production/InfectStatisticWeb/InfectData.db"; //数据库名
 	String username = "";  //数据库用户名
 	String password = "";  //数据库用户密码*/
-	Connection con = DriverManager.getConnection("jdbc:sqlite://d:/软件工程作业/production/production/InfectStatisticWeb/InfectData.db");  //连接状态
+	Connection con = DriverManager.getConnection("jdbc:sqlite://e:/娱乐/firefoxDownload/apache-tomcat-9.0.31-windows-x64/apache-tomcat-9.0.31/webapps/ROOT/Infect/InfectStatisticWeb/src/InfectData.db");  //连接状态
 %>
 <%!
 	public int[][] getProvinceArray(Connection conn,String tableName){
@@ -114,14 +114,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title><%=province %>省疫情详情</title>
-<script src="WebContent/dist/echarts.js"></script>
-<script src="WebContent/map/js/china.js"></script>
+<script src="dist/echarts.js"></script>
+<script src="map/js/china.js"></script>
 <script>
 			function returnBack(){
 				window.location.replace("index.jsp");
 			}
 		</script>
-<link rel="stylesheet" type="text/css" href="WebContent/style/style.css" />
+<link rel="stylesheet" type="text/css" href="style/style.css" />
 </head>
 <body>
 <%
